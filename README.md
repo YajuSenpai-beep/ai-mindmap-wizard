@@ -21,20 +21,21 @@
 - **AI 负责结构化**（生成 Markdown / Mermaid 代码）
 - **专业软件负责可视化**（XMind / draw.io）
 - 提示词**工具无关**，任何 LLM 都能用
-- 不止教你怎么画，还教你**怎么思考**
+- **全管道覆盖**：从原始图片/PDF 一路到可编辑思维导图
 
 ---
 
 ## 🎯 能做什么
 
-- 📝 **文本转思维导图**：一篇文章 → 3 分钟变成 XMind 可编辑导图
+- 📸 **素材准备**：图片/PDF/Word/PPT → OCR 提取 → 文本（通道 F）
+- 📝 **文本转思维导图**：一篇文章 → 3 分钟变成 XMind 可编辑导图（通道 A）
 - 📸 **图片数字化**：看到别人的导图想拿来改？AI 识别 → Markdown → 可编辑
 - 💡 **主题扩展**：只有一个想法？AI 帮你扩展成完整框架
 - 🔀 **流程图生成**：描述流程 → AI 生成 Mermaid 代码 → 导入 draw.io
 - 🧭 **图表选型**：37 种图表类型，按目的和受众帮你选最合适的
-- 🧠 **方法论指导**：五星心法、7 要素、发散-收敛循环——系统化思维训练
+- 🧠 **方法论指导**：五星心法、7 要素、发散-收敛循环、子母图——系统化思维训练
 - 🔧 **软件指南**：XMind + draw.io 操作大全、快捷键速查
-- 🩺 **故障排查**：编码乱码、导入失败、渲染错误——15+ 常见问题解决方案
+- 🩺 **故障排查**：编码乱码、导入失败、渲染错误、OCR质量——全面排查
 
 ---
 
@@ -78,6 +79,7 @@ Skill 会根据你的意图，自动走对应的通道：
 通道 C · 图表选型  → 37 种图表决策矩阵 + 推荐
 通道 D · 软件操作  → XMind/draw.io 指南
 通道 E · 完整流程  → B → C → A → D 一站串联
+通道 F · 素材准备  → 图片/PDF OCR → 文本 → 通道 A
 ```
 
 ---
@@ -86,9 +88,25 @@ Skill 会根据你的意图，自动走对应的通道：
 
 ```
 ai-mindmap-wizard/
-├── SKILL.md                              # 主编排器（5 通道路由）
+├── SKILL.md                              # 主编排器（7 通道路由）
 ├── README.md                             # 本文件
+├── tools/                                # Python 工具链 🆕
+│   ├── pipeline.py                       #   一键全管道（8步）
+│   ├── ocr_engine.py                     #   批量 OCR + 质量评分
+│   ├── dedup.py                          #   图片去重（感知哈希）
+│   ├── incremental.py                    #   增量处理
+│   ├── clustering.py                     #   内容聚类（TF-IDF）
+│   ├── llm_correct.py                    #   LLM OCR 纠错
+│   ├── formats.py                        #   Word/PPT/HTML 提取
+│   ├── quality_checker.py                #   交叉校验
+│   ├── wechat2md.py                      #   微信文章转换
+│   ├── skill_template.md                 #   写作规范模板
+│   └── requirements.txt                  #   Python 依赖
 └── references/                           # 知识库
+    ├── material-prep/                    # 素材层 · INPUT
+    │   ├── pipeline-overview.md          #   8步管道总览
+    │   ├── ocr-extraction.md             #   图片/PDF OCR 技巧
+    │   └── format-extraction.md          #   Word/PPT/HTML 提取
     ├── methodology/                      # 心法层 · WHY
     │   ├── five-star-heart.md            #   五星心法金字塔
     │   ├── seven-elements.md             #   7 要素（4基础+3特殊）

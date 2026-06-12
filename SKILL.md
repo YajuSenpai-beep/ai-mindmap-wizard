@@ -1,33 +1,34 @@
 ---
 name: ai-mindmap
 description: |
-  思维可视化引擎：覆盖方法论(五星心法/7要素/发散收敛)、37种图表选型、AI管道(Markdown→XMind / Mermaid→draw.io)、软件操作、故障排查。
-  触发词：「做思维导图」「生成导图」「思维导图」「流程图」「mindmap」「AI导图」「整理成导图」「画流程图」「怎么梳理」「怎么组织」「该用什么图」「XX图怎么画」「XMind」「draw.io」「快捷键」「演示」「demo」「模板」。
+  思维可视化引擎：图片/PDF→OCR提取→AI生成Markdown→XMind/draw.io 思维导图，全管道覆盖。
+  含方法论(五星心法/7要素/发散收敛)、37种图表选型、素材准备(OCR/去重/聚类)、AI管道、软件操作。
+  触发词：「做思维导图」「生成导图」「思维导图」「流程图」「mindmap」「AI导图」「整理成导图」「画流程图」「怎么梳理」「怎么组织」「该用什么图」「XX图怎么画」「XMind」「draw.io」「快捷键」「演示」「demo」「模板」「提取知识」「图片转笔记」「OCR」「整理截图」「PDF转导图」。
 ---
 
 # 思维可视化引擎
 
-> AI 做你的思维教练 —— 从「怎么想」到「怎么画」到「用什么画」，一条龙覆盖。
+> 从「一堆图片/PDF」到「一张可编辑的思维导图」——全管道一站式覆盖。
 
 ## 核心理念
 
 ```
-          ┌─────────────────────────────┐
-          │       思维可视化引擎          │
-          │    Thought Visualization     │
-          ├─────────────────────────────┤
-          │                             │
-          │  心法层 WHY  →  methodology/ │
-          │  技法层 HOW  →  diagram-types/│
-          │  工具层 WHAT →  software/    │
-          │           + ai-pipeline/     │
-          │                             │
-          └─────────────────────────────┘
+          ┌─────────────────────────────────┐
+          │         思维可视化引擎            │
+          │      Thought Visualization       │
+          ├─────────────────────────────────┤
+          │                                 │
+          │  素材层 IN   →  material-prep/  │
+          │  心法层 WHY  →  methodology/    │
+          │  技法层 HOW  →  diagram-types/  │
+          │  工具层 WHAT →  software/       │
+          │           + ai-pipeline/        │
+          │                                 │
+          └─────────────────────────────────┘
 ```
 
-- **AI 负责结构化**，专业软件负责可视化
-- Markdown / Mermaid 是 AI 与软件之间的通用交换语言
-- 思维导图的核心不是画图，是**思维方式**（五星心法）
+- **素材 → 导图**：图片/PDF → OCR 提取 → AI 结构化 → Markdown → XMind/draw.io
+- AI 负责结构化，专业软件负责可视化
 - 这套流程**与具体 AI 工具无关**，任何 LLM 都能套用
 
 ---
@@ -44,6 +45,9 @@ description: |
 | **C: 图表选型** | 询问用什么图 | 「该用什么图」「这个场景适合什么」「XX图怎么画」「哪种图表」 |
 | **D: 软件操作** | 询问工具怎么用 | 「XMind怎么」「draw.io」「快捷键」「导入不了」「乱码了」 |
 | **E: 完整流程** | 大而全的需求 | 「帮我全面分析XX」「从零开始做XX的规划」 |
+| **F: 素材准备** | 手头是图片/PDF/文档 | 「整理截图」「PDF转导图」「图片转笔记」「批量OCR」「提取知识」 |
+
+> 通道 F 是通道 A 的上游：先把图片/PDF 变成文本，再走通道 A 生成导图。
 
 > 如果用户一句话触发多个通道（如「帮我把这个需求文档做成流程图，但我不知道用哪种」），先 C 选型 → 再 A 生成。
 > 如果用户是第一次使用或说「演示」「demo」「怎么用」，先走**演示通道**。
@@ -218,6 +222,54 @@ description: |
 
 ---
 
+## 通道 F: 素材准备
+
+用户手头是图片/PDF/文档，还没变成文本。这是通道 A 的上游。
+
+### F1. 确认素材类型
+
+| 用户手头有什么 | → 加载 |
+|--------------|-------|
+| 图片文件夹（截图/照片） | [OCR 提取指南](references/material-prep/ocr-extraction.md) |
+| PDF 文件 | [PDF 处理策略](references/ai-pipeline/image-to-mindmap.md)（PDF 处理节） |
+| Word/PPT/HTML 文档 | [格式提取指南](references/material-prep/format-extraction.md) |
+| 微信文章 HTML | [微信文章转换](references/material-prep/format-extraction.md) |
+| 大量重复图片 | [图片去重](references/material-prep/pipeline-overview.md) |
+
+### F2. 如果用户有 Python 环境
+
+引导用户使用内置 Python 工具链（`tools/` 目录）：
+
+```bash
+# 安装依赖
+pip install -r tools/requirements.txt
+
+# 一键全管道（8步）
+python tools/pipeline.py /path/to/images my_project
+
+# 只做 OCR
+python tools/pipeline.py /path/to/images my_project --only ocr
+
+# 预览去重
+python tools/dedup.py /path/to/images --dry-run
+```
+
+### F3. 如果用户没有 Python 环境
+
+给手动方案：
+1. **图片去重**：用文件资源管理器按大小排序，手动删除明显重复的
+2. **OCR**：上传到支持图片的 AI 工具（KIMI/Claude/DeepSeek），逐张识别
+3. **格式提取**：Word/PPT 直接复制文字；PDF 能选中就复制，不能就截图上传 AI
+4. **进入通道 A**：提取的文字用通道 A 的标准提示词生成 Markdown 导图
+
+### F4. 进入下一阶段
+
+素材变成文本后，自动衔接到通道 A。
+
+> 📋 **全管道速记**：图片/PDF → OCR（F）→ Markdown（A）→ XMind（D）→ 可编辑导图
+
+---
+
 ## 工作流速查卡
 
 ```
@@ -226,6 +278,7 @@ description: |
 ├──────────────────────────────────────────────────────────┤
 │                                                          │
 │  🎬 第一次用？→ 演示：30秒看效果 + 即用模板                 │
+│  📸 手头是图片/PDF？→ 通道 F：OCR提取 → 文本 → 导图        │
 │  🧠 不知道怎么想？→ 通道 B：五星心法 / 7要素 / 发散收敛     │
 │  📊 不知道用什么图？→ 通道 C：37种图表按功能分类 + 决策矩阵  │
 │  ⚡ 有内容要生成？→ 通道 A：AI提示词 → .md → XMind/draw.io │
@@ -233,6 +286,7 @@ description: |
 │  🚀 从零开始？→ 通道 E：B→C→A→D 一站串联                 │
 │  📋 直接套用？→ 6个Markdown模板，复制填空即可              │
 │                                                          │
+│  全管道：图片/PDF → OCR(F) → Markdown(A) → XMind(D)       │
 │  核心工具链：任意 AI + XMind + draw.io（全免费）           │
 │                                                          │
 └──────────────────────────────────────────────────────────┘
@@ -250,6 +304,7 @@ description: |
 
 **不能做的**：
 - 直接调用 AI 生成内容（你需要自己去任意 AI 工具中提问）
+- 运行 OCR（需要本地安装 Tesseract 或使用 image-knowledge-extractor 工具链）
 - 替代 XMind / draw.io 的安装
 - 保证 AI 输出 100% 完美 — AI 生成有随机性，通常需要微调
 - 替代专业领域的深度知识（如电路设计、消防安全规范等）
