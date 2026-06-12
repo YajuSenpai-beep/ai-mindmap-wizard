@@ -64,6 +64,6 @@
 
 ## 关联
 
-- [[five-star-heart]] — 放射化→简单化 的理论基础
-- [[seven-elements]] — 第三阶段的具体绘制规范
-- [[application-scenarios]] — 各场景的发散-收敛应用
+- [五星心法](five-star-heart.md) — 放射化→简单化 的理论基础
+- [7要素](seven-elements.md) — 第三阶段的具体绘制规范
+- [应用场景](application-scenarios.md) — 各场景的发散-收敛应用

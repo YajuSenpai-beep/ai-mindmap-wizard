@@ -60,7 +60,7 @@ draw.io 支持 Mermaid 语法，AI 生成流程图后可直接导入：
 3. 点击确定 → 流程图自动渲染
 4. 可进一步手动调整布局和样式
 
-参考 [[../ai-pipeline/mermaid-flowchart]] 获取 Mermaid 提示词模板。
+参考 [Mermaid流程图](../ai-pipeline/mermaid-flowchart.md) 获取 Mermaid 提示词模板。
 
 ## 常用模板
 

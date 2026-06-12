@@ -111,3 +111,26 @@ Ctrl+滚轮     = 缩放
 Ctrl+H       = 适应窗口
 Space+拖拽   = 平移画布
 ```
+
+---
+
+## Mac 用户注意
+
+所有 `Ctrl` 替换为 `Cmd`：
+
+| Windows | Mac |
+|---------|-----|
+| `Ctrl+Z` | `Cmd+Z` |
+| `Ctrl+C` | `Cmd+C` |
+| `Ctrl+V` | `Cmd+V` |
+| `Ctrl+A` | `Cmd+A` |
+| `Ctrl+G` | `Cmd+G` |
+| `Ctrl+D` | `Cmd+D` |
+| `Ctrl+L` | `Cmd+L` |
+| `Ctrl+B` | `Cmd+B` |
+| `Ctrl+I` | `Cmd+I` |
+| `Ctrl+Enter` | `Cmd+Enter` |
+| `Ctrl+]` | `Cmd+]` |
+| `Ctrl+滚轮` | `Cmd+滚轮` |
+
+> XMind Mac 版特有：`Cmd+Shift+N` = 新建文件，`Cmd+E` = 导出。

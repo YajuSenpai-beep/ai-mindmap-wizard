@@ -60,6 +60,13 @@
 - 右侧实时预览
 - 可导出为 SVG / PNG
 
+> ⚠️ **CJK 字体兼容注意**：部分 Mermaid 渲染器（包括某些版本的 Mermaid Live 和 draw.io）对中文/日文/韩文字符的渲染支持不完善，可能出现节点文字显示为方框、错位或截断。
+>
+> **解决方案**：
+> - Mermaid Live：右上角设置 → 选择支持 CJK 的字体（如 `Noto Sans SC`）
+> - draw.io：导入后手动检查并调整中文节点的字体设置
+> - 如果渲染仍有问题，将节点文字改为英文缩写 + 图例说明
+
 ## 完整示例
 
 ### 用户登录流程
@@ -102,4 +109,4 @@ Mermaid 支持的不只是流程图：
 
 > **提示**：对于甘特图，推荐直接使用 draw.io 的甘特图模板而非 Mermaid，操作更灵活。
 
-参考 [[../software/drawio-guide]] 了解更多 draw.io 操作。
+参考 [draw.io指南](../software/drawio-guide.md) 了解更多 draw.io 操作。

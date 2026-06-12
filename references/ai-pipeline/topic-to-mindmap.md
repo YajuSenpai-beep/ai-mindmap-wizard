@@ -68,9 +68,9 @@
 ## 后续步骤
 
 AI 生成大纲后：
-1. 导入 XMind（参考 [[text-to-mindmap]]）
-2. 用 [[../methodology/diverge-converge]] 的方法，做你自己的发散补充
-3. 用 [[../methodology/seven-elements]] 的规则优化节点关键词
+1. 导入 XMind（参考 [文本→导图流程](text-to-mindmap.md)）
+2. 用 [发散-收敛](../methodology/diverge-converge.md) 的方法，做你自己的发散补充
+3. 用 [7要素](../methodology/seven-elements.md) 的规则优化节点关键词
 4. 最终导图应该融合了 AI 的广度 + 你的深度
 
 ## 示例

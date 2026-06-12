@@ -66,7 +66,7 @@
 - 调整节点位置（拖拽即可）
 - 添加联系线（`Ctrl+L`）标注关联
 
-详细美化操作参考 [[../software/xmind-guide]]。
+详细美化操作参考 [XMind指南](../software/xmind-guide.md)。
 
 ## 技巧
 

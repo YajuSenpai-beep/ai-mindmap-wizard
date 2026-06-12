@@ -49,7 +49,7 @@
 - 关注「谁在什么时候做什么」
 
 ### 软件/程序流程图
-- 用 [[../ai-pipeline/mermaid-flowchart]] 生成 Mermaid 代码 → 导入 draw.io
+- 用 [Mermaid流程图](../ai-pipeline/mermaid-flowchart.md) 生成 Mermaid 代码 → 导入 draw.io
 - 保持单一入口、单一出口的结构化原则
 - 循环要标注循环条件和出口
 

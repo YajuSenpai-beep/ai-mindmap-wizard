@@ -48,7 +48,7 @@
 
 这是最高效的使用方式——让 AI 生成结构化内容，XMind 负责可视化：
 
-1. 在任意 AI 工具中生成 Markdown 格式的思维导图（参考 [[../ai-pipeline/text-to-mindmap]]）
+1. 在任意 AI 工具中生成 Markdown 格式的思维导图（参考 [文本→导图流程](../ai-pipeline/text-to-mindmap.md)）
 2. 复制代码 → 保存为 UTF-8 编码的 `.md` 文件
 3. XMind → **文件 → 导入 → Markdown** → 选择文件
 4. 导图自动生成，手动微调布局和配色

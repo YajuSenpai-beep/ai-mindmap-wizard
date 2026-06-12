@@ -6,28 +6,28 @@
 
 | 我想... | 推荐图表 | 详细参考 |
 |---------|---------|---------|
-| 梳理知识/读书笔记/会议记录 | **思维导图** | [[../methodology/five-star-heart]] |
-| 展示团队层级/汇报关系 | **组织结构图** | [[org-hierarchy]] |
-| 描述业务流程/操作步骤 | **流程图** (业务/软件/数据流) | [[process-flow]] |
-| 规划项目进度/任务排期 | **甘特图** | [[project-management]] |
-| 分析问题根本原因 | **鱼骨图** (因果分析) | [[analysis-tools]] |
-| 做选择/判断/决策 | **决策树** | [[analysis-tools]] |
-| 评估战略/竞品/市场 | **SWOT 分析** | [[analysis-tools]] |
-| 设计数据库/实体关系 | **ER 图** | [[technical-diagrams]] |
-| 设计系统架构/技术栈 | **架构图 / 拓扑图** | [[technical-diagrams]] |
-| 设计软件模块/类/用例 | **UML 建模图** | [[technical-diagrams]] |
-| 画电路/电子工程 | **电路图** | [[technical-diagrams]] |
-| 设计网络/服务器部署 | **网络图 / 拓扑图** | [[technical-diagrams]] |
-| 商业计划/盈利模式 | **商业画布** | [[business-strategy]] |
-| KPI 监控/数据仪表 | **仪表图** | [[business-strategy]] |
-| 设计办公室/店铺布局 | **平面图/布局图** | [[specialized]] |
-| 制作时间轴/大事记 | **时间线** | [[project-management]] |
-| 比较选项/产品对比 | **比较图** | [[analysis-tools]] |
-| 财务分析/盈利拆解 | **杜邦分析图** | [[analysis-tools]] |
-| 组织活动/婚礼/会议 | **思维导图 + 甘特图** | [[../methodology/application-scenarios]] |
-| 准备演讲/汇报 | **思维导图** | [[../methodology/application-scenarios]] |
-| 职业规划/面试准备 | **思维导图** | [[../methodology/application-scenarios]] |
-| 时间管理/日程安排 | **思维导图 + 时间线** | [[../methodology/application-scenarios]] |
+| 梳理知识/读书笔记/会议记录 | **思维导图** | [五星心法](../methodology/five-star-heart.md) |
+| 展示团队层级/汇报关系 | **组织结构图** | [组织层级图](org-hierarchy.md) |
+| 描述业务流程/操作步骤 | **流程图** (业务/软件/数据流) | [流程图类](process-flow.md) |
+| 规划项目进度/任务排期 | **甘特图** | [项目管理图](project-management.md) |
+| 分析问题根本原因 | **鱼骨图** (因果分析) | [分析工具图](analysis-tools.md) |
+| 做选择/判断/决策 | **决策树** | [分析工具图](analysis-tools.md) |
+| 评估战略/竞品/市场 | **SWOT 分析** | [分析工具图](analysis-tools.md) |
+| 设计数据库/实体关系 | **ER 图** | [技术图表](technical-diagrams.md) |
+| 设计系统架构/技术栈 | **架构图 / 拓扑图** | [技术图表](technical-diagrams.md) |
+| 设计软件模块/类/用例 | **UML 建模图** | [技术图表](technical-diagrams.md) |
+| 画电路/电子工程 | **电路图** | [技术图表](technical-diagrams.md) |
+| 设计网络/服务器部署 | **网络图 / 拓扑图** | [技术图表](technical-diagrams.md) |
+| 商业计划/盈利模式 | **商业画布** | [商业战略图](business-strategy.md) |
+| KPI 监控/数据仪表 | **仪表图** | [商业战略图](business-strategy.md) |
+| 设计办公室/店铺布局 | **平面图/布局图** | [专业制图](specialized.md) |
+| 制作时间轴/大事记 | **时间线** | [项目管理图](project-management.md) |
+| 比较选项/产品对比 | **比较图** | [分析工具图](analysis-tools.md) |
+| 财务分析/盈利拆解 | **杜邦分析图** | [分析工具图](analysis-tools.md) |
+| 组织活动/婚礼/会议 | **思维导图 + 甘特图** | [应用场景](../methodology/application-scenarios.md) |
+| 准备演讲/汇报 | **思维导图** | [应用场景](../methodology/application-scenarios.md) |
+| 职业规划/面试准备 | **思维导图** | [应用场景](../methodology/application-scenarios.md) |
+| 时间管理/日程安排 | **思维导图 + 时间线** | [应用场景](../methodology/application-scenarios.md) |
 
 ## 按受众速查
 

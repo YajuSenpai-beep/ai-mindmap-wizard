@@ -21,9 +21,9 @@
 
 **操作流程**：
 1. 先通读，标记关键段落（不要边读边画）
-2. 用 [[diverge-converge]] 第一阶段：把记住的所有东西倒出来
+2. 用 [发散-收敛](diverge-converge.md) 第一阶段：把记住的所有东西倒出来
 3. 翻书查漏补缺，补充遗漏
-4. 用 [[seven-elements]] 规则做最终整理
+4. 用 [7要素](seven-elements.md) 规则做最终整理
 
 ## 场景二：职业规划
 
@@ -39,7 +39,7 @@
 ```
 
 **关键方法论**：
-- 使用 [[five-star-heart]] 中的放射化：先列出所有可能方向，不做评判
+- 使用 [五星心法](five-star-heart.md) 中的放射化：先列出所有可能方向，不做评判
 - 用 SMART 原则（Specific / Measurable / Attainable / Relevant / Time-bound）评估目标
 - 最终导图应该能回答：「我下周一开始做什么？」
 
@@ -98,12 +98,13 @@
 ## 行动指南
 
 1. 确定场景 → 使用对应的推荐结构
-2. 先用 [[diverge-converge]] 填内容
-3. 用 [[seven-elements]] 规范美化
-4. 如果需要生成实际文件，转到 AI 管道（[[../ai-pipeline/text-to-mindmap]]）
+2. 先用 [发散-收敛](diverge-converge.md) 填内容
+3. 用 [7要素](seven-elements.md) 规范美化
+4. 如果需要生成实际文件，转到 AI 管道（[文本→导图流程](../ai-pipeline/text-to-mindmap.md)）
 
 ## 关联
 
-- [[five-star-heart]] — 所有场景的理论基础
-- [[diverge-converge]] — 内容填充的方法
-- [[seven-elements]] — 最终成图的标准
+- [五星心法](five-star-heart.md) — 所有场景的理论基础
+- [发散-收敛](diverge-converge.md) — 内容填充的方法
+- [7要素](seven-elements.md) — 最终成图的标准
+- [子母图](mother-child-diagram.md) — 知识量大时的进阶技法

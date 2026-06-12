@@ -43,5 +43,5 @@
 
 ## 关联
 
-- [[five-star-heart]] — 7 要素是五星心法的绘图层实现
-- [[diverge-converge]] — 用要素规则指导发散和收敛阶段
+- [五星心法](five-star-heart.md) — 7 要素是五星心法的绘图层实现
+- [发散-收敛](diverge-converge.md) — 用要素规则指导发散和收敛阶段

@@ -44,7 +44,7 @@
 - 最常用的是类图（结构）和时序图（交互）
 - 类图：类名 + 属性 + 方法，标注继承/实现/关联
 - 时序图：从上到下 = 时间推进，横箭头 = 消息调用
-- 推荐用 [[../ai-pipeline/mermaid-flowchart]] 生成时序图 Mermaid 代码
+- 推荐用 [Mermaid流程图](../ai-pipeline/mermaid-flowchart.md) 生成时序图 Mermaid 代码
 
 ### 架构图 / 拓扑图 / 系统拓扑图
 - 从高层到低层：先画整体架构，再展开子系统

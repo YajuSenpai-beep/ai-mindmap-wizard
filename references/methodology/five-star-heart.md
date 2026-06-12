@@ -61,6 +61,8 @@
 
 ## 关联
 
-- [[seven-elements]] — 将心法落地为具体的绘制要素
-- [[diverge-converge]] — 放射化与简单化的实操循环
-- [[application-scenarios]] — 学习/职业/时间管理场景中的心法应用
+- [7要素](seven-elements.md) — 将心法落地为具体的绘制要素
+- [发散-收敛](diverge-converge.md) — 放射化与简单化的实操循环
+- [应用场景](application-scenarios.md) — 学习/职业/时间管理场景中的心法应用
+- [子母图](mother-child-diagram.md) — 知识量大时的心法进阶应用
+- [写作规范](writing-standards.md) — 结构化输出的质量标准
