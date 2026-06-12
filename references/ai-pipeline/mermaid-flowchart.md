@@ -94,6 +94,44 @@ graph TD
     I --> J
 ```
 
+## 色彩体系 — 让你的图专业且统一
+
+> 来自 [visualcave](https://github.com/varkart/visualcave) 的配色方案：用颜色传达语义，而非仅仅装饰。
+
+### Mermaid 配色 classDef
+
+在 AI 生成 Mermaid 代码时追加以下指令：
+
+```
+请为不同类型的节点应用颜色语义：
+- 入口/用户/外部系统 → classDef userStyle fill:#FFF3CD,stroke:#CCA900
+- 服务/API/计算节点 → classDef serviceStyle fill:#DBEAFE,stroke:#2563EB
+- 数据库/存储 → classDef dataStyle fill:#DCFCE7,stroke:#16A34A
+- 认证/安全节点 → classDef authStyle fill:#F3E8FF,stroke:#9333EA
+- 队列/事件/流水线 → classDef queueStyle fill:#FFEDD5,stroke:#EA580C
+- 缓存/CDN/外部API → classDef cacheStyle fill:#CCFBF1,stroke:#0D9488
+- 注释/标注 → classDef noteStyle fill:#F3F4F6,stroke:#6B7280
+```
+
+### 语义速查表
+
+| 颜色 | 色值 | 用于 | 示例 |
+|------|------|------|------|
+| 🟡 黄 | `#FFF3CD` | 用户、浏览器、入口点 | 「用户登录」「浏览器请求」 |
+| 🔵 蓝 | `#DBEAFE` | 服务、API、计算 | 「订单服务」「验证API」 |
+| 🟢 绿 | `#DCFCE7` | 数据库、存储、成功 | 「用户表」「写入成功」 |
+| 🟣 紫 | `#F3E8FF` | 认证、安全、AI模型 | 「JWT验证」「模型推理」 |
+| 🟠 橙 | `#FFEDD5` | 队列、事件、流水线 | 「消息队列」「CI Pipeline」 |
+| 🔷 青 | `#CCFBF1` | 缓存、CDN、外部API | 「Redis缓存」「支付网关」 |
+| ⬜ 灰 | `#F3F4F6` | 注释、标注 | 「此处需要人工审核」 |
+
+### 在提示词中使用
+
+```
+要求：使用颜色语义化。用户相关节点用黄色(#FFF3CD)，服务节点用蓝色(#DBEAFE)，
+数据库节点用绿色(#DCFCE7)，安全节点用紫色(#F3E8FF)。
+```
+
 ## 更多流程图类型
 
 Mermaid 支持的不只是流程图：

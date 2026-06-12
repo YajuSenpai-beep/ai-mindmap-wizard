@@ -155,6 +155,7 @@ description: |
 | 需要创意/突破思维框 | 发散-收敛循环 | [发散-收敛](references/methodology/diverge-converge.md) |
 | 具体场景（学习/职业/演讲/时间管理/活动） | 场景模板 | [应用场景](references/methodology/application-scenarios.md) |
 | 知识量大、一张图装不下 | 子母图技法 | [子母图](references/methodology/mother-child-diagram.md) |
+| 想从多个角度分析同一主题 | 多视角分析 | [多视角分析](references/methodology/multi-perspective.md) |
 | AI 生成质量不够好/想自检 | 写作规范+质量自检 | [写作规范](references/methodology/writing-standards.md) → [质量自检](references/troubleshooting/quality-assurance.md) |
 
 ### B2. 给出方法论框架 + 可选的 AI 衔接
