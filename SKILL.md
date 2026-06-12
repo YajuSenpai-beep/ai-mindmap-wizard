@@ -204,6 +204,14 @@ description: |
 |-----------|------|
 | XMind 怎么用 | [XMind指南](references/software/xmind-guide.md) |
 | draw.io 怎么用 | [draw.io指南](references/software/drawio-guide.md) |
+| OneNote 怎么用 | [OneNote指南](references/software/onenote-guide.md) |
+| AI 办公（Excel/Word/PPT/WPS） | [AI办公指南](references/software/ai-office-guide.md) |
+| WPS 从入门到接单 | [WPS完全指南](references/software/wps-guide.md) |
+| Excel 从入门到接单 | [Excel完全指南](references/software/excel-guide.md) |
+| Word 从入门到接单 | [Word完全指南](references/software/word-guide.md) |
+| PPT 从入门到接单 | [PPT完全指南](references/software/ppt-guide.md) |
+| C4D 建模渲染动画 | [C4D完全指南](references/software/c4d-guide.md) |
+| Think-Cell 咨询级图表 | [Think-Cell指南](references/software/thinkcell-guide.md) |
 | XMind vs draw.io vs Visio 该用哪个 | [工具对照表](references/software/cross-tool-mapping.md) |
 | 快捷键 | [快捷键](references/software/keyboard-shortcuts.md) |
 | 出错了/乱码/导入失败 | [故障排查](references/troubleshooting/common-issues.md) |
@@ -312,9 +320,15 @@ python tools/dedup.py /path/to/images --dry-run
 
 ## 素材来源
 
-本 Skill 从 204 个原始素材单元中提炼（116 视频 + 72 笔记 + 16 PDF）：
-- 五星心法、7要素、发散-收敛、子母图 → 源自「引爆思维」+「思维导图集训」课程
+本 Skill 从 **4,762 个原始素材单元**中提炼：
+- 五星心法、7要素、发散-收敛、子母图 → 源自「引爆思维」+「思维导图集训」课程（204 单元）
 - 37 种图表类型 → 源自亿图图示实操教程，适配为工具无关知识
 - AI 管道（Markdown/Mermaid）→ 源自「AI做思维导图」专题
-- 软件操作 → 改写适配 XMind + draw.io（原素材为亿图图示）
+- 软件操作 → XMind + draw.io + OneNote + AI办公（原素材为亿图图示）
+- WPS 完全指南 → 529 文件（130 笔记 + 132 TXT + 3 PDF + WPS 函数进阶课程）
+- Excel 完全指南 + 数据可视化 → 821 文件 + 图表专项课程 8 讲
+- Word 完全指南 → 1,553 文件（含邮件合并/表单控件/宏/接单全流程）
+- PPT 完全指南 → 1,085 文件（含 30 种版面技法 + PPT 动画/超神课/Think-Cell 101 文件）
+- C4D 完全指南 → 774 文件（建模/OC材质/灯光/动画/AI集成）
+- Think-Cell 咨询图表 → 101 文件（麦肯锡级别图表引擎专项课程）
 - 预置模板 → 原创补充

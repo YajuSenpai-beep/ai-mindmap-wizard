@@ -1,6 +1,6 @@
 # 🧠 AI Thought Visualization Engine · Mindmap Wizard
 
-> Generate editable mind maps and flowcharts with any AI tool. From "how to think" to "how to draw" to "what tool to use" — all in one skill.
+> Generate editable mind maps and flowcharts with any AI tool. From "how to think" to "how to draw" to "what tool to use" — full pipeline coverage. **Distilled from 4,762 source files across 60 reference documents and 11 complete software guides.**
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Skill-orange)](https://claude.ai/code)
@@ -27,14 +27,30 @@ Core philosophy:
 
 ## 🎯 What It Can Do
 
-- 📝 **Text → Mind Map**: Turn any article into an editable XMind mind map in 3 minutes
-- 📸 **Image Digitization**: See someone's mind map and want to edit it? AI OCR → Markdown → editable
-- 💡 **Topic Expansion**: Only have a vague idea? AI expands it into a full structured outline
+### Mind Maps & Flowcharts (Core Pipeline)
+- 📸 **Material Prep**: Images/PDF/Word/PPT → OCR extraction → text (Lane F)
+- 📝 **Text → Mind Map**: Turn any article into an editable XMind mind map in 3 minutes (Lane A)
+- 📸 **Image Digitization**: See someone's map → AI OCR → Markdown → editable
+- 💡 **Topic Expansion**: Vague idea → AI expands it into a full structured outline
 - 🔀 **Flowchart Generation**: Describe a process → AI generates Mermaid code → import into draw.io
+
+### Methodology & Decision Support
+- 🧠 **Methodology**: Five-Star Heart, 7 Elements, Diverge-Converge, Mother-Child Diagrams, Multi-Perspective Analysis
 - 🧭 **Diagram Selection**: 37 diagram types with a purpose×audience decision matrix
-- 🧠 **Methodology Coaching**: Five-Star Heart Method, 7 Elements, Diverge-Converge cycle — systematic thinking training
-- 🔧 **Software Guides**: XMind + draw.io operations, keyboard shortcuts
-- 🩺 **Troubleshooting**: Encoding issues, import failures, rendering errors — 15+ common fixes
+- 📊 **Data Visualization**: 3-tier chart selection, Dashboard design, chart template system
+
+### Complete Software Guides (11 Tools)
+- 🗺️ **Mind Mapping**: XMind / draw.io operations + keyboard shortcuts
+- 📊 **Office Suite**: WPS / Excel / Word / PPT — beginner to professional freelancing level
+- 🎨 **3D Design**: C4D modeling · OC rendering · animation · AI integration
+- 📈 **Consulting Charts**: Think-Cell Chart10 — McKinsey-grade chart engine
+- 📓 **Note Management**: OneNote beginner to leadership level
+- 🤖 **AI-Assisted Office**: DeepSeek+KIMI for Excel/Word/PPT/WPS
+
+### Tools & Templates
+- 🛠️ **Python Toolchain**: Image deduplication / batch OCR / content clustering / LLM correction / format extraction (8-step pipeline)
+- 📋 **Ready Templates**: Book notes / Meeting minutes / Career planning / Project kickoff / Weekly review / SWOT analysis
+- 🩺 **Troubleshooting**: Encoding issues, import failures, rendering errors, AI output quality
 
 ---
 
@@ -48,7 +64,7 @@ git clone https://github.com/YajuSenpai-beep/ai-mindmap-wizard.git \
   ~/.claude/skills/ai-mindmap-wizard
 ```
 
-Or load directly in Claude Code with `/skill-name`.
+Or load directly in Claude Code with `/ai-mindmap`.
 
 ### 2. Use
 
@@ -65,19 +81,21 @@ Natural language triggers also work:
 | Quick generation | "Make a mind map from this article" |
 | Draw a flowchart | "Draw a user login flowchart" |
 | Need thinking help | "I want to do career planning but don't know where to start" |
-| Not sure what diagram to use | "What diagram should I use for root cause analysis?" |
-| Software help | "What are the XMind shortcuts?" |
+| Diagram selection | "What diagram should I use for root cause analysis?" |
+| Software help | "What are the XMind shortcuts?" "How to visualize data in Excel?" |
+| Material prep | "Extract text from these screenshots" "PDF to mind map" |
 
 ### 3. What You'll Get
 
 The skill auto-routes to the right lane based on your intent:
 
 ```
-Lane A · Quick Gen    → AI prompt templates + save & import steps
-Lane B · Methodology  → Five-Star Heart / 7 Elements / Diverge-Converge
-Lane C · Diagram Pick → 37-type decision matrix + recommendations
-Lane D · Tool Ops     → XMind/draw.io guides
+Lane A · Quick Gen     → AI prompt templates + save & import steps
+Lane B · Methodology   → Five-Star Heart / 7 Elements / Diverge-Converge / Mother-Child / Multi-Perspective
+Lane C · Diagram Pick  → 37-type decision matrix + recommendations
+Lane D · Tool Ops      → 11 complete software guides (XMind/draw.io/WPS/Excel/Word/PPT/C4D/Think-Cell/OneNote/AI Office)
 Lane E · Full Pipeline → B → C → A → D all in one
+Lane F · Material Prep → Image/PDF OCR → text → Lane A
 ```
 
 ---
@@ -86,16 +104,36 @@ Lane E · Full Pipeline → B → C → A → D all in one
 
 ```
 ai-mindmap-wizard/
-├── SKILL.md                              # Main orchestrator (5-lane router)
+├── SKILL.md                              # Main orchestrator (7-lane router)
 ├── README.md                             # Chinese documentation
 ├── README_EN.md                          # This file
 ├── LICENSE                               # MIT
+├── tools/                                # Python toolchain
+│   ├── pipeline.py                       #   One-click 8-step pipeline
+│   ├── ocr_engine.py                     #   Batch OCR + quality scoring
+│   ├── dedup.py                          #   Image dedup (perceptual hash)
+│   ├── incremental.py                    #   Incremental processing
+│   ├── clustering.py                     #   Content clustering (TF-IDF)
+│   ├── llm_correct.py                    #   LLM OCR correction
+│   ├── formats.py                        #   Word/PPT/HTML extraction
+│   ├── quality_checker.py                #   Cross-validation
+│   ├── wechat2md.py                      #   WeChat article conversion
+│   ├── skill_template.md                 #   Writing template
+│   └── requirements.txt                  #   Python dependencies
 └── references/                           # Knowledge base
+    ├── material-prep/                    # INPUT layer
+    │   ├── pipeline-overview.md          #   8-step pipeline overview
+    │   ├── ocr-extraction.md             #   Image/PDF OCR techniques
+    │   └── format-extraction.md          #   Office format extraction
+    │
     ├── methodology/                      # WHY layer
     │   ├── five-star-heart.md            #   Five-Star Heart pyramid
     │   ├── seven-elements.md             #   7 Elements (4 basic + 3 special)
-    │   ├── diverge-converge.md           #   Diverge-Converge cycle + 6 laws
-    │   └── application-scenarios.md      #   Learning/career/speech templates
+    │   ├── diverge-converge.md           #   Diverge-Converge cycle
+    │   ├── mother-child-diagram.md       #   Mother-Child diagrams
+    │   ├── multi-perspective.md          #   Multi-perspective analysis
+    │   ├── application-scenarios.md      #   Learning/career/speech templates
+    │   └── writing-standards.md          #   Quality standards & self-check
     │
     ├── diagram-types/                    # HOW layer
     │   ├── index.md                      #   Decision matrix (purpose × audience)
@@ -107,10 +145,18 @@ ai-mindmap-wizard/
     │   ├── business-strategy.md          #   Business canvas / Use case diagrams
     │   └── specialized.md                #   Floor plans / Wireframes / Storyboards
     │
-    ├── software/                         # WHAT layer
+    ├── software/                         # WHAT layer (11 complete guides)
     │   ├── xmind-guide.md                #   XMind operations
     │   ├── drawio-guide.md               #   draw.io operations
-    │   ├── cross-tool-mapping.md         #   XMind ↔ draw.io ↔ Visio comparison
+    │   ├── onenote-guide.md              #   OneNote beginner to leadership
+    │   ├── ai-office-guide.md            #   AI-assisted office (DeepSeek+KIMI)
+    │   ├── wps-guide.md                  #   WPS beginner to freelancing (529 files)
+    │   ├── excel-guide.md                #   Excel + data viz (821 files)
+    │   ├── word-guide.md                 #   Word beginner to freelancing (1,553 files)
+    │   ├── ppt-guide.md                  #   PPT + 30 layout techniques (1,085 files)
+    │   ├── c4d-guide.md                  #   C4D modeling·rendering·animation (774 files)
+    │   ├── thinkcell-guide.md            #   Think-Cell consulting charts (101 files)
+    │   ├── cross-tool-mapping.md         #   Tool comparison + plugin quick-ref
     │   └── keyboard-shortcuts.md         #   Shortcut cheat sheets
     │
     ├── ai-pipeline/                      # AI Pipeline
@@ -118,10 +164,20 @@ ai-mindmap-wizard/
     │   ├── image-to-mindmap.md           #   Image → Mind map
     │   ├── topic-to-mindmap.md           #   Topic → Expanded outline
     │   ├── mermaid-flowchart.md          #   Mermaid flowcharts
-    │   └── prompt-templates.md           #   Prompt template library
+    │   ├── prompt-templates.md           #   Chinese prompt library
+    │   └── prompt-templates-en.md        #   English prompt library
     │
-    └── troubleshooting/
-        └── common-issues.md              #   15+ common issues & fixes
+    ├── templates/                        # Ready-to-use templates
+    │   ├── book-notes.md                 #   Book notes
+    │   ├── meeting-minutes.md            #   Meeting minutes
+    │   ├── career-planning.md            #   Career planning
+    │   ├── project-kickoff.md            #   Project kickoff
+    │   ├── weekly-review.md              #   Weekly review
+    │   └── swot-analysis.md              #   SWOT analysis
+    │
+    └── troubleshooting/                  # Troubleshooting
+        ├── common-issues.md              #   15+ common issues & fixes
+        └── quality-assurance.md          #   AI output quality self-check
 ```
 
 ---
@@ -134,8 +190,11 @@ ai-mindmap-wizard/
 | Mind Mapping | [XMind](https://xmind.app) | Free version available |
 | Flowcharts & Diagrams | [draw.io](https://app.diagrams.net) | Completely free |
 | Online Mermaid Preview | [Mermaid Live](https://mermaid.live) | Free |
+| Consulting-Grade Charts | Think-Cell Chart10 | Paid |
+| Office Documents | WPS / Microsoft 365 | Free/Paid |
+| 3D Rendering | C4D + OC Renderer | Paid |
 
-> **Why not Edraw Max?** This skill focuses on free, accessible tools. XMind + draw.io cover everything most users need.
+> **Why not Edraw Max?** This skill focuses on accessible tools. XMind + draw.io cover everything most users need for mind mapping and diagramming.
 
 ---
 
@@ -193,7 +252,7 @@ Node text ≤ 15 words. Output ONLY Mermaid code.
 Process: [describe your process]
 ```
 
-More templates in [`references/ai-pipeline/prompt-templates.md`](references/ai-pipeline/prompt-templates.md).
+More templates in [`references/ai-pipeline/prompt-templates.md`](references/ai-pipeline/prompt-templates.md) (Chinese) and [`references/ai-pipeline/prompt-templates-en.md`](references/ai-pipeline/prompt-templates-en.md) (English).
 
 ---
 
@@ -202,7 +261,7 @@ More templates in [`references/ai-pipeline/prompt-templates.md`](references/ai-p
 Issues and PRs welcome!
 
 - New diagram types → add/expand files under `references/diagram-types/`
-- Better prompts → improve `references/ai-pipeline/prompt-templates.md`
+- Better prompts → improve `references/ai-pipeline/prompt-templates*.md`
 - Software guides → contribute to `references/software/`
 - Report bugs → [Issues](https://github.com/YajuSenpai-beep/ai-mindmap-wizard/issues)
 
@@ -221,11 +280,12 @@ MIT License — see [LICENSE](LICENSE) for details.
 - ✅ Guide you through the full material-to-visualization pipeline
 - ✅ Recommend the right diagram type from 37 options
 - ✅ Teach mind mapping methodology
-- ✅ Provide XMind / draw.io operation guides and shortcuts
+- ✅ Provide 11 complete software guides from beginner to professional level
+- ✅ Supply a Python toolchain for OCR/dedup/clustering/correction
 
 **What this skill CANNOT do**:
 - ❌ Call AI APIs directly (you paste the prompt into your AI tool of choice)
-- ❌ Replace XMind / draw.io installation
+- ❌ Replace XMind / draw.io or other commercial software installation
 - ❌ Guarantee 100% perfect AI output (AI is stochastic — usually needs minor tweaks)
 
 ---
@@ -238,5 +298,5 @@ MIT License — see [LICENSE](LICENSE) for details.
 ---
 
 <p align="center">
-  <sub>Made with 🧠 and ☕ · Distilled from 116 tutorial videos and 72 notes</sub>
+  <sub>Made with 🧠 and ☕ · Distilled from 4,762 source files (course notes + TXT transcriptions + PDFs + practice files)</sub>
 </p>
