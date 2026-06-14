@@ -27,7 +27,7 @@ claude mcp add chat-visualizer -- npx mcp-chat-visualizer
 ```
 ① 对话进行中或结束时
 ② 用户：「把这段对话整理成思维导图」
-③ Skill 自动走通道 A：提取核心主题→层级化→输出 Markdown
+③ 复制 AI 提示词模板 → 提取核心主题 → 层级化 → 输出 Markdown
 ④ 保存为 .md → 导入 XMind 或直接生成
 ```
 
