@@ -25,6 +25,7 @@ def parse_markdown_to_tree(md_text: str) -> dict | None:
     lines: list[str] = md_text.strip().split("\n")
     root: dict | None = None
     stack: list[tuple[int, dict]] = []
+    base_level: int = 0
 
     for line in lines:
         line = line.strip()
@@ -36,9 +37,19 @@ def parse_markdown_to_tree(md_text: str) -> dict | None:
 
         if match:
             level: int = len(match.group(1))
+            base_level = level
             text: str = match.group(2).strip()
         elif list_match:
-            level = len(list_match.group(1)) // 2 + 2
+            indent = len(list_match.group(1))
+            rel_depth = indent // 2 + 1
+            # 基于最近的标题级别计算，而非栈顶（栈顶可能是兄弟列表项）
+            if base_level > 0:
+                level = base_level + rel_depth
+            elif stack:
+                # 尚无标题时，indent=0 的条目与栈顶同级
+                level = stack[-1][0] if indent == 0 else stack[-1][0] + rel_depth
+            else:
+                level = rel_depth + 1
             text = list_match.group(2).strip()
         else:
             continue

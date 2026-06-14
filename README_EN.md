@@ -1,6 +1,6 @@
 # 🧠 AI Thought Visualization Engine · Mindmap Wizard
 
-> Generate editable mind maps and flowcharts with any AI tool. From "how to think" to "how to draw" to "what tool to use" — full pipeline coverage. **Distilled from 4,762 source files across 73 reference documents, 13 software guides, 20 Python tools, and 135+ total files.**
+> Generate editable mind maps and flowcharts with any AI tool. From "how to think" to "how to draw" to "what tool to use" — full pipeline coverage. **19 Python scripts, 66 reference guides, 14 software guides, 116 files.**
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Skill-orange)](https://claude.ai/code)
@@ -28,8 +28,8 @@ Core philosophy:
 ## 🎯 What It Can Do
 
 ### Mind Maps & Flowcharts (Core Pipeline)
-- 📸 **Material Prep**: Images/PDF/Word/PPT/Audio/Video → OCR/transcription → text (Lane F)
-- 📝 **Text → Mind Map**: Turn any article into an editable XMind mind map in 3 minutes (Lane A)
+- 📸 **Material Prep**: Images/PDF/Word/PPT/Audio/Video → OCR/transcription → text
+- 📝 **Text → Mind Map**: Turn any article into an editable XMind mind map in 3 minutes
 - 📸 **Image Digitization**: See someone's map → AI OCR → Markdown → editable
 - 💡 **Topic Expansion**: Vague idea → AI expands it into a full structured outline
 - 🔀 **Flowchart Generation**: Describe a process → AI generates Mermaid code → import into draw.io
@@ -41,7 +41,7 @@ Core philosophy:
 - 🧭 **Diagram Selection**: 37 diagram types with a purpose×audience decision matrix
 - 📊 **Data Visualization**: 3-tier chart selection, Dashboard design, chart template system, industry-aware generation
 
-### Complete Software Guides (13 Tools)
+### Complete Software Guides (14 Tools)
 - 🗺️ **Mind Mapping**: XMind / draw.io / Obsidian Canvas / Excalidraw
 - 📊 **Office Suite**: WPS / Excel / Word / PPT — beginner to professional freelancing level
 - 🎨 **3D Design**: C4D modeling · OC rendering · animation · AI integration
@@ -50,7 +50,7 @@ Core philosophy:
 - 🤖 **AI-Assisted Office**: DeepSeek+KIMI for Excel/Word/PPT/WPS
 
 ### Tools & Templates
-- 🛠️ **Python Toolchain (20 tools)**: OCR engine, image dedup (pHash), content clustering (TF-IDF), LLM correction, Mermaid fixer (37 rules), Markdown→XMind, multi-format export (6 formats), mindmap→PPT, URL→mindmap, brand color adapter, MCP server, quality evaluator, diagram editor
+- 🛠️ **Python Toolchain (19 scripts)**: OCR engine, image dedup (pHash), content clustering (TF-IDF), LLM correction, Mermaid fixer (37 rules), Markdown→XMind, multi-format export (6 formats), mindmap→PPT, URL→mindmap, brand color adapter, MCP server, quality evaluator, diagram editor
 - 📋 **Ready Templates**: Book notes / Meeting minutes / Career planning / Project kickoff / Weekly review / SWOT analysis
 - 🩺 **Troubleshooting**: Anti-hallucination verification, quality self-check, 15+ common issues
 
@@ -88,16 +88,26 @@ Natural language triggers also work:
 
 ### 3. What You'll Get
 
-The skill auto-routes to the right lane based on your intent:
+Three layers of support:
 
-```
-Lane A · Quick Gen     → AI prompt templates + save & import steps
-Lane B · Methodology   → 9 methodology files + anti-hallucination
-Lane C · Diagram Pick  → 37-type decision matrix + recommendations
-Lane D · Tool Ops      → 13 software guides + 20 Python tools
-Lane E · Full Pipeline → B → C → A → D all in one
-Lane F · Material Prep → OCR/transcription → text → Lane A
-```
+| Layer | Description |
+|-------|-------------|
+| 🔧 CLI Tools | 19 Python scripts covering the full pipeline: OCR → AI → Markdown → XMind/draw.io |
+| 📋 AI Prompts | Universal prompt templates — copy to any LLM to generate structured Markdown |
+| 📚 Knowledge Base | 66 reference guides in `references/`, open MD files directly (faster than Skill loading) |
+
+Common commands:
+
+| Task | Command |
+|------|---------|
+| Text → Mindmap | Copy the prompt from SKILL.md to any AI → get Markdown → import to XMind |
+| Image/PDF → Mindmap | `python tools/pipeline.py <image_dir> <project_name>` |
+| Markdown → XMind | `python tools/markdown_to_xmind.py input.md -o output.xmind` |
+| Markdown → 6 formats | `python tools/multi_export.py input.md -f all` |
+| Fix Mermaid syntax | `python tools/mermaid_fixer.py input.mmd` |
+| Mindmap → PPT | `python tools/mindmap_to_ppt.py input.md -c professional` |
+| URL → Mindmap | `python tools/url_to_mindmap.py https://example.com/article` |
+| MCP server | `claude mcp add mindmap-wizard -- python tools/mcp_server.py` |
 
 ---
 
@@ -105,13 +115,13 @@ Lane F · Material Prep → OCR/transcription → text → Lane A
 
 ```
 ai-mindmap-wizard/
-├── SKILL.md                              # Main orchestrator (7-lane router)
+├── SKILL.md                              # Tool entry page + command reference + knowledge base index
 ├── README.md / README_EN.md / LICENSE
 ├── CHANGELOG.md / API_REFERENCE.md
 ├── CONTRIBUTING.md / package.json
 ├── pyproject.toml                        # Ruff config
 │
-├── tools/                                # Python toolchain (20 tools)
+├── tools/                                # Python toolchain (19 scripts)
 │   ├── pipeline.py                       #   One-click 8-step pipeline
 │   ├── ocr_engine.py                     #   Batch OCR + quality scoring
 │   ├── dedup.py                          #   Image dedup (perceptual hash)
@@ -131,19 +141,19 @@ ai-mindmap-wizard/
 │   ├── _common.py                        #   Shared module (zero duplication)
 │   ├── skill_template.md / requirements.txt
 │
-├── tests/                                # Test suite (58 tests)
+├── tests/                                # Test suite (59 tests)
 │   ├── test_tools.py / test_links.py
 │   └── benchmark/                        #   10 quality benchmark cases
 │
 ├── docker/                               # Docker one-click deployment
-├── tutorial/                             # Interactive tutorial
-└── .github/workflows/                    # CI/CD (pytest + coverage + mypy + ruff)
+├── tutorial/                             # Usage guide
+└── .github/workflows/                    # CI/CD (pytest + coverage + link check + mypy + ruff)
 │
-└── references/                           # Knowledge base (73 docs, 10 dirs)
+└── references/                           # Knowledge base (66 docs, 9 dirs)
     ├── material-prep/ (5 files)           # INPUT: OCR, formats, multimodal, Obsidian
     ├── methodology/ (9 files)             # WHY: Five-Star Heart, 7 Elements, Tufte, etc.
     ├── diagram-types/ (8 files)           # HOW: 37 types, 7 categories
-    ├── software/ (14 files)               # WHAT: 13 guides + cross-tool mapping
+    ├── software/ (14 files)               # WHAT: 14 guides (12 software + 2 reference)
     ├── ai-pipeline/ (15 files)            # AI: text/image/topic/YouTube/D3/DrawIO/PPT
     ├── integrations/ (5 files)            # NotebookLM, VisualCave, OSS libs, commercial, local models
     ├── advanced/ (1 file)                 # 6 design patterns
@@ -238,8 +248,8 @@ MIT License — see [LICENSE](LICENSE) for details.
 - ✅ Guide full material-to-visualization pipeline (OCR→AI→export)
 - ✅ Recommend diagram types from 37 options with decision matrix
 - ✅ Teach 9 methodology frameworks for systematic thinking
-- ✅ Provide 13 complete software guides (beginner to professional)
-- ✅ Supply 20 Python tools (OCR/dedup/clustering/Mermaid fix/export/MCP server)
+- ✅ Provide 14 complete software guides (XMind/draw.io/WPS/Excel/Word/PPT/C4D/Think-Cell/OneNote/Obsidian/Excalidraw/AI office + cross-tool reference)
+- ✅ Supply 19 Python scripts (OCR/dedup/clustering/Mermaid fix/Markdown→XMind/multi-format export/mindmap→PPT/MCP server/quality eval)
 
 **What this skill CANNOT do**:
 - ❌ Call AI APIs directly (you paste the prompt into your AI tool of choice)
@@ -256,5 +266,5 @@ MIT License — see [LICENSE](LICENSE) for details.
 ---
 
 <p align="center">
-  <sub>Made with 🧠 and ☕ · 4,762 source files · 73 references · 13 software guides · 20 Python tools · 58 tests · 304 verified links · 6 rounds of competitive analysis covering 60+ products</sub>
+  <sub>Made with 🧠 and ☕ · 19 Python scripts · 66 reference guides · 14 software guides · 59 tests · 304 verified links · 116 files · 6 rounds of competitive analysis covering 60+ products</sub>
 </p>

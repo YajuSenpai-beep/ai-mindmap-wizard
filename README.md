@@ -1,6 +1,6 @@
 # 🧠 AI 思维可视化引擎 · Mindmap Wizard
 
-> 用任意 AI 工具一键生成可编辑的思维导图和流程图。从「怎么想」到「怎么画」到「用什么画」——全管道覆盖。**4,762 个原始素材提炼，135 个文件，13 个软件完全指南，20 个 Python 工具，73 篇参考文献。**
+> 用任意 AI 工具一键生成可编辑的思维导图和流程图。从「怎么想」到「怎么画」到「用什么画」——全管道覆盖。**19 个 Python 脚本，66 篇参考指南，14 篇软件指南，116 个文件。**
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Skill-orange)](https://claude.ai/code)
@@ -28,8 +28,8 @@
 ## 🎯 能做什么
 
 ### 思维导图 & 流程图（核心管道）
-- 📸 **素材准备**：图片/PDF/Word/PPT → OCR 提取 → 文本（通道 F）
-- 📝 **文本转思维导图**：一篇文章 → 3 分钟变成 XMind 可编辑导图（通道 A）
+- 📸 **素材准备**：图片/PDF/Word/PPT → OCR 提取 → 文本
+- 📝 **文本转思维导图**：一篇文章 → 3 分钟变成 XMind 可编辑导图
 - 📸 **图片数字化**：看到别人的导图想拿来改？AI 识别 → Markdown → 可编辑
 - 💡 **主题扩展**：只有一个想法？AI 帮你扩展成完整框架
 - 🔀 **流程图生成**：描述流程 → AI 生成 Mermaid 代码 → 导入 draw.io
@@ -39,7 +39,7 @@
 - 🧭 **图表选型**：37 种图表类型，按目的和受众帮你速选
 - 📊 **数据可视化**：图表三梯队选型、Dashboard 设计、图表模板体系
 
-### 软件完全指南（11 个工具）
+### 软件完全指南（14 个工具）
 - 🗺️ **思维导图**：XMind / draw.io 操作大全 + 快捷键
 - 📊 **数据办公**：WPS / Excel / Word / PPT —— 从入门到接单就业级
 - 🎨 **3D 设计**：C4D 建模·OC渲染·动画·AI集成
@@ -48,7 +48,7 @@
 - 🤖 **AI 办公**：DeepSeek+KIMI 辅助 Excel/Word/PPT/WPS
 
 ### 工具 & 模板
-- 🛠️ **Python 工具链**：图片去重/批量OCR/内容聚类/LLM纠错/格式提取（8步全管道）
+- 🛠️ **Python 工具链**：图片去重/批量OCR/内容聚类/LLM纠错/格式提取/Mermaid修复/Markdown→XMind/多格式导出/导图→PPT/URL→导图/品牌配色/MCP服务/质量评估（19 个脚本）
 - 📋 **开箱模板**：读书笔记/会议纪要/职业规划/项目启动/周回顾/SWOT分析
 - 🩺 **故障排查**：编码乱码、导入失败、渲染错误、AI输出质量——全面排查
 
@@ -87,16 +87,26 @@ git clone https://github.com/YajuSenpai-beep/ai-mindmap-wizard.git \
 
 ### 3. 你会得到什么
 
-Skill 会根据你的意图，自动走对应的通道：
+Skill 提供三个层次的支持：
 
-```
-通道 A · 快速生成  → AI 提示词模板 + 保存导入步骤
-通道 B · 方法指导  → 五星心法 / 7要素 / 发散收敛 / 子母图 / 多视角
-通道 C · 图表选型  → 37 种图表决策矩阵 + 推荐
-通道 D · 软件操作  → 13 个软件完全指南（XMind/draw.io/WPS/Excel/Word/PPT/C4D/Think-Cell/OneNote/AI办公/Obsidian/Excalidraw）
-通道 E · 完整流程  → B → C → A → D 一站串联
-通道 F · 素材准备  → 图片/PDF OCR → 文本 → 通道 A
-```
+| 层次 | 说明 |
+|------|------|
+| 🔧 命令行工具 | 19 个 Python 脚本覆盖全管道：OCR→AI→Markdown→XMind/draw.io |
+| 📋 AI 提示词 | 通用提示词模板，复制到任意 LLM 即可生成结构化 Markdown |
+| 📚 知识库 | 66 篇参考指南在 `references/` 下，直接打开 MD 文件阅读 |
+
+高频操作命令表：
+
+| 想做什么 | 命令 |
+|---------|------|
+| 文本 → 思维导图 | 复制 SKILL.md 中的提示词到任意 AI → 得到 Markdown → 导入 XMind |
+| 图片/PDF → 导图 | `python tools/pipeline.py 图片目录 项目名` |
+| Markdown → XMind | `python tools/markdown_to_xmind.py input.md -o output.xmind` |
+| Markdown → 6 种格式 | `python tools/multi_export.py input.md -f all` |
+| Mermaid 语法修复 | `python tools/mermaid_fixer.py input.mmd` |
+| 导图 → PPT | `python tools/mindmap_to_ppt.py input.md -c professional` |
+| URL → 导图 | `python tools/url_to_mindmap.py https://example.com/article` |
+| MCP 服务 | `claude mcp add mindmap-wizard -- python tools/mcp_server.py` |
 
 ---
 
@@ -104,38 +114,66 @@ Skill 会根据你的意图，自动走对应的通道：
 
 ```
 ai-mindmap-wizard/
-├── SKILL.md                              # 主编排器（7 通道路由）
+├── SKILL.md                              # 工具入口页 + 命令速查 + 知识库索引
 ├── README.md                             # 中文文档（本文件）
 ├── README_EN.md                          # English documentation
+├── CHANGELOG.md / API_REFERENCE.md       # 变更日志 / API 参考
+├── CONTRIBUTING.md / package.json        # 贡献指南 / 包信息
+├── pyproject.toml                        # Ruff 配置
 ├── LICENSE                               # MIT
-├── tools/                                # Python 工具链
+│
+├── tools/                                # Python 工具链（19 个脚本）
 │   ├── pipeline.py                       #   一键全管道（8步）
 │   ├── ocr_engine.py                     #   批量 OCR + 质量评分
 │   ├── dedup.py                          #   图片去重（感知哈希）
-│   ├── incremental.py                    #   增量处理
 │   ├── clustering.py                     #   内容聚类（TF-IDF）
 │   ├── llm_correct.py                    #   LLM OCR 纠错
+│   ├── mermaid_fixer.py                  #   Mermaid 语法修复（37 规则）
+│   ├── markdown_to_xmind.py              #   Markdown → XMind 原生文件
+│   ├── multi_export.py                   #   6 格式并行导出
+│   ├── mindmap_to_ppt.py                 #   导图 → PPT（4 主题）
+│   ├── url_to_mindmap.py                 #   URL → 导图
+│   ├── brand_adapt.py                    #   品牌配色自动检测
+│   ├── diagram_editor.py                 #   导图结构分析
+│   ├── mcp_server.py                     #   MCP 服务（5 端点）
+│   ├── eval.py                           #   多模型质量评估
 │   ├── formats.py                        #   Word/PPT/HTML 提取
+│   ├── incremental.py                    #   增量处理
 │   ├── quality_checker.py                #   交叉校验
 │   ├── wechat2md.py                      #   微信文章转换
+│   ├── _common.py                        #   共享模块（零重复）
 │   ├── skill_template.md                 #   写作规范模板
 │   └── requirements.txt                  #   Python 依赖
-└── references/                           # 知识库
-    ├── material-prep/                    # 素材层 · INPUT
+│
+├── tests/                                # 测试套件（59 个测试）
+│   ├── test_tools.py                     #   工具单元测试
+│   ├── test_links.py                     #   内部链接检查
+│   └── benchmark/                        #   10 个质量基准案例
+│
+├── docker/                               # Docker 一键部署
+├── tutorial/                             # 使用说明
+└── .github/workflows/                    # CI/CD（pytest + coverage + link check + mypy + ruff）
+│
+└── references/                           # 知识库（66 篇，9 个目录）
+    ├── material-prep/                    # 素材层 · INPUT（5 篇）
     │   ├── pipeline-overview.md          #   8步管道总览
     │   ├── ocr-extraction.md             #   图片/PDF OCR 技巧
-    │   └── format-extraction.md          #   Word/PPT/HTML 提取
+    │   ├── format-extraction.md          #   Word/PPT/HTML 提取
+    │   ├── multimodal-input.md           #   多模态输入
+    │   └── obsidian-workflow.md          #   Obsidian 工作流
     │
-    ├── methodology/                      # 心法层 · WHY
+    ├── methodology/                      # 心法层 · WHY（9 篇）
     │   ├── five-star-heart.md            #   五星心法金字塔
-    │   ├── seven-elements.md             #   7 要素（4基础+3特殊）
+    │   ├── seven-elements.md             #   7 要素
     │   ├── diverge-converge.md           #   发散-收敛循环 + 6 法则
     │   ├── mother-child-diagram.md       #   子母图技法
     │   ├── multi-perspective.md          #   多视角分析
     │   ├── application-scenarios.md      #   学习/职业/演讲 等场景模板
-    │   └── writing-standards.md          #   写作规范与质量自检
+    │   ├── writing-standards.md          #   写作规范与质量自检
+    │   ├── knowledge-graph.md            #   知识图谱
+    │   └── tufte-principles.md           #   Tufte 设计原则
     │
-    ├── diagram-types/                    # 技法层 · HOW
+    ├── diagram-types/                    # 技法层 · HOW（8 篇）
     │   ├── index.md                      #   决策矩阵（按目的×受众速查）
     │   ├── org-hierarchy.md              #   组织结构图
     │   ├── process-flow.md               #   7 种流程图
@@ -145,7 +183,7 @@ ai-mindmap-wizard/
     │   ├── business-strategy.md          #   商业画布/用例图
     │   └── specialized.md                #   平面图/线框图/故事板
     │
-    ├── software/                         # 工具层 · WHAT（13个完全指南）
+    ├── software/                         # 工具层 · WHAT（14 篇）
     │   ├── xmind-guide.md                #   XMind 操作指南
     │   ├── drawio-guide.md               #   draw.io 操作指南
     │   ├── onenote-guide.md              #   OneNote 从入门到领导级
@@ -161,7 +199,7 @@ ai-mindmap-wizard/
     │   ├── cross-tool-mapping.md         #   工具对照表 + 插件速查
     │   └── keyboard-shortcuts.md         #   快捷键速查
     │
-    ├── ai-pipeline/                      # AI 管道（15个文件）
+    ├── ai-pipeline/                      # AI 管道（15 篇）
     │   ├── text-to-mindmap.md            #   文本 → 思维导图
     │   ├── image-to-mindmap.md           #   图片 → 思维导图
     │   ├── topic-to-mindmap.md           #   主题 → 大纲扩展
@@ -178,26 +216,21 @@ ai-mindmap-wizard/
     │   ├── prompt-templates.md           #   中文提示词库
     │   └── prompt-templates-en.md        #   English prompts
     │
-    ├── integrations/                     # 外部集成（5个文件）
+    ├── integrations/                     # 外部集成（5 篇）
     │   ├── notebooklm-mcp.md             #   NotebookLM MCP
     │   ├── visualcave.md                 #   VisualCave 集成
     │   ├── oss-libraries.md              #   开源库对比
     │   ├── commercial-tools.md           #   商业工具对比
     │   └── local-models.md               #   本地模型指南
     │
-    ├── advanced/                         # 高级模式
-    │   └── design-patterns.md            #   6种设计模式
+    ├── advanced/                         # 高级模式（1 篇）
+    │   └── design-patterns.md            #   6 种设计模式
     │
-    ├── templates/                        # 开箱模板（6个）
-    ├── troubleshooting/                  # 故障排查（3个）
-    │   ├── common-issues.md
-    │   ├── quality-assurance.md
-    │   └── anti-hallucination.md
-    │
-    ├── tutorial/                         # 互动教程
-    ├── docker/                           # Docker 部署
-    ├── tests/                            # 测试 + benchmark
-    └── .github/workflows/                # CI/CD
+    ├── templates/                        # 开箱模板（6 个）
+    └── troubleshooting/                  # 故障排查（3 篇）
+        ├── common-issues.md
+        ├── quality-assurance.md
+        └── anti-hallucination.md
 ```
 
 ---
@@ -295,8 +328,8 @@ MIT License — 自由使用、修改、分发。
 - ✅ 37 种图表类型的选型建议
 - ✅ 思维导图方法论指导
 - ✅ XMind / draw.io 操作和快捷键
-- ✅ 11 个办公软件从入门到接单级的完整知识体系
-- ✅ Python 工具链（OCR/去重/聚类/纠错）
+- ✅ 14 篇软件指南（XMind/draw.io/WPS/Excel/Word/PPT/C4D/Think-Cell/OneNote/Obsidian/Excalidraw/AI办公 等）
+- ✅ Python 工具链（19 个脚本：OCR/去重/聚类/纠错/Mermaid修复/Markdown→XMind/多格式导出/PPT/MCP服务 等）
 
 **不能做的**：
 - ❌ 直接调用 AI 生成内容（你需要自己去 AI 工具中提问）
@@ -313,5 +346,5 @@ MIT License — 自由使用、修改、分发。
 ---
 
 <p align="center">
-  <sub>Made with 🧠 and ☕ · 从 4,762 个原始素材文件中提炼 · 135 个文件 · 20 个 Python 工具 · 73 篇参考文献 · 13 个软件指南 · 58 个测试 · 304 个验证链接 · 6 轮竞品分析覆盖 60+ 产品</sub>
+  <sub>Made with 🧠 and ☕ · 19 个 Python 脚本 · 66 篇参考指南 · 14 篇软件指南 · 59 个测试 · 304 个验证链接 · 116 个文件 · 6 轮竞品分析覆盖 60+ 产品</sub>
 </p>

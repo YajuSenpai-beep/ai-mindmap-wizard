@@ -18,11 +18,12 @@ from xml.etree import ElementTree as ET
 
 
 def build_xmind_json(root: dict) -> dict:
-    """将嵌套 dict 转为 XMind JSON 格式。"""
+    """将嵌套 dict 转为 XMind JSON 格式（XMind 2020+ 原生格式）。"""
 
     def build_topic(node):
         topic = {
             "id": uuid.uuid4().hex[:26],
+            "class": "topic",
             "title": node["title"],
         }
         if node.get("children"):
@@ -38,6 +39,7 @@ def build_xmind_json(root: dict) -> dict:
     root_topic = build_topic(root)
     return {
         "id": uuid.uuid4().hex[:26],
+        "class": "sheet",
         "title": "sheet1",
         "rootTopic": root_topic,
     }
@@ -63,7 +65,8 @@ def build_xmind_xml(root: dict) -> str:
     sheet_el.append(build_topic_el(root))
 
     ET.indent(root_el, space="  ")
-    return ET.tostring(root_el, encoding="unicode")
+    xml_body = ET.tostring(root_el, encoding="unicode")
+    return '<?xml version="1.0" encoding="UTF-8"?>\n' + xml_body
 
 
 def create_xmind(markdown_path: str, output_path: str):
@@ -74,22 +77,37 @@ def create_xmind(markdown_path: str, output_path: str):
     if tree is None:
         raise ValueError("无法从 Markdown 中解析出任何内容。请确保有 # 标题。")
 
-    # 构建 JSON 和 XML
+    # 构建 JSON
     xmind_json = build_xmind_json(tree)
     xmind_xml = build_xmind_xml(tree)
 
-    # 创建 manifest
-    manifest_xml = '''<?xml version="1.0" encoding="UTF-8"?>
-<manifest xmlns="urn:xmind:xmap:xmlns:manifest:1.0">
-  <file-entry full-path="content.xml" media-type="text/xml"/>
-  <file-entry full-path="content.json" media-type="application/json"/>
-</manifest>'''
+    # 创建 metadata (XMind 2020+ 需要)
+    import time
+    ts = int(time.time() * 1000)
+    metadata = {
+        "creator": {
+            "name": "AI Mindmap Wizard",
+            "version": "1.0"
+        },
+        "created": ts,
+        "modified": ts,
+    }
+
+    # 创建 manifest.json (XMind 2020+ 使用此文件替代 META-INF/manifest.xml)
+    manifest = {
+        "file-entries": {
+            "content.json": {},
+            "metadata.json": {},
+            "content.xml": {},
+        }
+    }
 
     # 打包为 .xmind (本质是 zip)
     with zipfile.ZipFile(output_path, "w", zipfile.ZIP_DEFLATED) as zf:
-        zf.writestr("content.xml", xmind_xml)
+        zf.writestr("manifest.json", json.dumps(manifest, ensure_ascii=False, indent=2))
         zf.writestr("content.json", json.dumps([xmind_json], ensure_ascii=False, indent=2))
-        zf.writestr("META-INF/manifest.xml", manifest_xml)
+        zf.writestr("metadata.json", json.dumps(metadata, ensure_ascii=False, indent=2))
+        zf.writestr("content.xml", xmind_xml)
 
     node_count = count_nodes(tree)
     logger.info(f"✅ 已生成 XMind 文件: {output_path}")

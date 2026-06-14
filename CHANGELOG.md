@@ -4,7 +4,7 @@
 - pyproject.toml ruff 配置（0 errors, all checks passed）
 - API_REFERENCE.md 完整工具 API 参考
 - CHANGELOG.md v1-v6 版本历史
-- tests: +9 测试 (50→58), _common.py 覆盖 73%→95%
+- tests: +9 测试 (50→59), _common.py 覆盖 73%→95%
 - quality_checker / mermaid_fixer CLI 测试
 
 ### Fixed
@@ -78,10 +78,6 @@
 
 ### Added
 - 6 种高级设计模式参考
-- Skill 安全最佳实践参考
-- CI/CD 管线参考
-- TDD 工作流案例
-- 企业级部署章节
 
 ---
 

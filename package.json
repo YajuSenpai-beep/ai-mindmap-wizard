@@ -1,7 +1,7 @@
 {
   "name": "ai-mindmap-wizard",
-  "version": "5.0.0",
-  "description": "AI思维可视化引擎 — 图片/PDF→OCR提取→AI生成Markdown→XMind/draw.io 思维导图，全管道覆盖。含方法论(五星心法/7要素/发散收敛)、37种图表选型、素材准备(OCR/去重/聚类)、AI管道、13个软件操作指南。",
+  "version": "6.1.0",
+  "description": "AI思维可视化引擎 — 图片/PDF→OCR提取→AI生成Markdown→XMind/draw.io 思维导图，全管道覆盖。含方法论(五星心法/7要素/发散收敛)、37种图表选型、素材准备(OCR/去重/聚类)、AI管道、14个软件操作指南。",
   "main": "SKILL.md",
   "scripts": {
     "test": "pytest tests/ -v",
@@ -38,7 +38,7 @@
     "CONTRIBUTING.md",
     "references/",
     "tools/",
-    "templates/",
+    "references/templates/",
     "tutorial/",
     "docker/",
     ".github/"

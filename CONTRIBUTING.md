@@ -21,25 +21,22 @@ python tests/test_links.py .
 
 ```
 ai-mindmap-wizard/
-├── SKILL.md                    # 主编排器（7通道路由）
-├── tools/                      # Python 工具链（14个）
-├── tests/                      # 单元测试 + 链接检查
-├── references/                 # 知识库（10个子目录）
-│   ├── ai-pipeline/            # AI 管道（15个文件）
-│   ├── methodology/            # 方法论（9个文件）
-│   ├── software/               # 软件指南（13个文件）
-│   ├── diagram-types/          # 图表类型（8个文件）
-│   ├── material-prep/          # 素材准备（5个文件）
-│   ├── troubleshooting/        # 故障排查（3个文件）
-│   ├── best-practices/         # 最佳实践（5个文件）
-│   ├── examples/               # 案例（5个文件）
-│   ├── templates/              # 模板（6个文件）
-│   ├── integrations/           # 外部集成（5个文件）
-│   └── advanced/               # 高级模式（1个文件）
-├── tutorial/                   # 互动教程
+├── SKILL.md                    # 工具入口页 + 命令速查 + 知识库索引
+├── tools/                      # Python 工具链（19 个脚本）
+├── tests/                      # 单元测试（59 个）+ 链接检查
+├── references/                 # 知识库（9 个子目录，66 篇）
+│   ├── ai-pipeline/            # AI 管道（15 篇）
+│   ├── methodology/            # 方法论（9 篇）
+│   ├── software/               # 软件指南（14 篇）
+│   ├── diagram-types/          # 图表类型（8 篇）
+│   ├── material-prep/          # 素材准备（5 篇）
+│   ├── troubleshooting/        # 故障排查（3 篇）
+│   ├── templates/              # 模板（6 个）
+│   ├── integrations/           # 外部集成（5 篇）
+│   └── advanced/               # 高级模式（1 篇）
+├── tutorial/                   # 使用说明
 ├── docker/                     # Docker 部署
-├── .github/workflows/          # CI/CD
-└── tests/                      # 测试
+└── .github/workflows/          # CI/CD
 ```
 
 ## 贡献方式
