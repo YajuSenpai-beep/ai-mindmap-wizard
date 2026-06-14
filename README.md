@@ -1,6 +1,6 @@
 # 🧠 AI 思维可视化引擎 · Mindmap Wizard
 
-> 用任意 AI 工具一键生成可编辑的思维导图和流程图。从「怎么想」到「怎么画」到「用什么画」——全管道覆盖。**4,762 个原始素材提炼，60 个文件，11 个软件完全指南。**
+> 用任意 AI 工具一键生成可编辑的思维导图和流程图。从「怎么想」到「怎么画」到「用什么画」——全管道覆盖。**4,762 个原始素材提炼，135 个文件，13 个软件完全指南，20 个 Python 工具，73 篇参考文献。**
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Skill-orange)](https://claude.ai/code)
@@ -93,7 +93,7 @@ Skill 会根据你的意图，自动走对应的通道：
 通道 A · 快速生成  → AI 提示词模板 + 保存导入步骤
 通道 B · 方法指导  → 五星心法 / 7要素 / 发散收敛 / 子母图 / 多视角
 通道 C · 图表选型  → 37 种图表决策矩阵 + 推荐
-通道 D · 软件操作  → 11 个软件完全指南（XMind/draw.io/WPS/Excel/Word/PPT/C4D/Think-Cell/OneNote/AI办公）
+通道 D · 软件操作  → 13 个软件完全指南（XMind/draw.io/WPS/Excel/Word/PPT/C4D/Think-Cell/OneNote/AI办公/Obsidian/Excalidraw）
 通道 E · 完整流程  → B → C → A → D 一站串联
 通道 F · 素材准备  → 图片/PDF OCR → 文本 → 通道 A
 ```
@@ -145,39 +145,59 @@ ai-mindmap-wizard/
     │   ├── business-strategy.md          #   商业画布/用例图
     │   └── specialized.md                #   平面图/线框图/故事板
     │
-    ├── software/                         # 工具层 · WHAT（11个完全指南）
+    ├── software/                         # 工具层 · WHAT（13个完全指南）
     │   ├── xmind-guide.md                #   XMind 操作指南
     │   ├── drawio-guide.md               #   draw.io 操作指南
     │   ├── onenote-guide.md              #   OneNote 从入门到领导级
     │   ├── ai-office-guide.md            #   AI 办公（DeepSeek+KIMI）
-    │   ├── wps-guide.md                  #   WPS 从入门到接单（529文件提炼）
-    │   ├── excel-guide.md                #   Excel 从入门到接单+数据可视化（821文件提炼）
-    │   ├── word-guide.md                 #   Word 从入门到接单（1,553文件提炼）
-    │   ├── ppt-guide.md                  #   PPT 从入门到接单+30种版面技法（1,085文件提炼）
-    │   ├── c4d-guide.md                  #   C4D 建模·渲染·动画·AI集成（774文件提炼）
-    │   ├── thinkcell-guide.md            #   Think-Cell 咨询级图表引擎（101文件提炼）
-    │   ├── cross-tool-mapping.md         #   工具对照表 + 专业插件速查
+    │   ├── wps-guide.md                  #   WPS 从入门到接单
+    │   ├── excel-guide.md                #   Excel + 数据可视化
+    │   ├── word-guide.md                 #   Word 从入门到接单
+    │   ├── ppt-guide.md                  #   PPT + 30种版面技法
+    │   ├── c4d-guide.md                  #   C4D 建模·渲染·动画
+    │   ├── thinkcell-guide.md            #   Think-Cell 咨询图表
+    │   ├── obsidian-canvas-guide.md      #   Obsidian Canvas
+    │   ├── excalidraw-guide.md           #   Excalidraw 手绘
+    │   ├── cross-tool-mapping.md         #   工具对照表 + 插件速查
     │   └── keyboard-shortcuts.md         #   快捷键速查
     │
-    ├── ai-pipeline/                      # AI 管道
+    ├── ai-pipeline/                      # AI 管道（15个文件）
     │   ├── text-to-mindmap.md            #   文本 → 思维导图
     │   ├── image-to-mindmap.md           #   图片 → 思维导图
     │   ├── topic-to-mindmap.md           #   主题 → 大纲扩展
     │   ├── mermaid-flowchart.md          #   Mermaid 流程图
-    │   ├── prompt-templates.md           #   中文提示词模板库
-    │   └── prompt-templates-en.md        #   English prompt templates
+    │   ├── drawio-generation.md          #   DrawIO 生成
+    │   ├── drawio-mcp-guide.md           #   Draw.io MCP 指南
+    │   ├── d3-interactive.md             #   D3.js 交互式
+    │   ├── youtube-mindmap.md            #   YouTube 时间戳导图
+    │   ├── realtime-mindmap.md           #   对话实时导图
+    │   ├── no-prompt-mode.md             #   无提示词模式
+    │   ├── inline-ai.md                  #   内联AI免复制
+    │   ├── ppt-from-mindmap.md           #   导图转PPT
+    │   ├── visual-styles.md              #   高颜值预设样式
+    │   ├── prompt-templates.md           #   中文提示词库
+    │   └── prompt-templates-en.md        #   English prompts
     │
-    ├── templates/                        # 开箱即用模板
-    │   ├── book-notes.md                 #   读书笔记
-    │   ├── meeting-minutes.md            #   会议纪要
-    │   ├── career-planning.md            #   职业规划
-    │   ├── project-kickoff.md            #   项目启动
-    │   ├── weekly-review.md              #   周回顾
-    │   └── swot-analysis.md              #   SWOT 分析
+    ├── integrations/                     # 外部集成（5个文件）
+    │   ├── notebooklm-mcp.md             #   NotebookLM MCP
+    │   ├── visualcave.md                 #   VisualCave 集成
+    │   ├── oss-libraries.md              #   开源库对比
+    │   ├── commercial-tools.md           #   商业工具对比
+    │   └── local-models.md               #   本地模型指南
     │
-    └── troubleshooting/                  # 故障排查
-        ├── common-issues.md              #   常见问题速查
-        └── quality-assurance.md          #   AI 输出质量自检
+    ├── advanced/                         # 高级模式
+    │   └── design-patterns.md            #   6种设计模式
+    │
+    ├── templates/                        # 开箱模板（6个）
+    ├── troubleshooting/                  # 故障排查（3个）
+    │   ├── common-issues.md
+    │   ├── quality-assurance.md
+    │   └── anti-hallucination.md
+    │
+    ├── tutorial/                         # 互动教程
+    ├── docker/                           # Docker 部署
+    ├── tests/                            # 测试 + benchmark
+    └── .github/workflows/                # CI/CD
 ```
 
 ---
@@ -293,5 +313,5 @@ MIT License — 自由使用、修改、分发。
 ---
 
 <p align="center">
-  <sub>Made with 🧠 and ☕ · 从 4,762 个原始素材文件中提炼（课程视频笔记+TXT转录+PDF文档+实践文件）</sub>
+  <sub>Made with 🧠 and ☕ · 从 4,762 个原始素材文件中提炼 · 135 个文件 · 20 个 Python 工具 · 73 篇参考文献 · 13 个软件指南 · 58 个测试 · 304 个验证链接 · 6 轮竞品分析覆盖 60+ 产品</sub>
 </p>

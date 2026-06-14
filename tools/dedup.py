@@ -8,10 +8,12 @@ Reduces OCR workload by 30-50% for typical photo collections.
 Usage:
   python dedup.py <input_dir> [--threshold 5] [--dry-run]
 """
-import os, sys, argparse, json
+import os
+import argparse
 from pathlib import Path
 from PIL import Image
 from collections import defaultdict
+from _common import logger
 
 
 def dhash(img, hash_size=8):
@@ -95,7 +97,7 @@ def deduplicate(input_dir, threshold=5, dry_run=False):
             if Path(f).suffix.lower() in img_exts:
                 all_images.append(Path(root) / f)
 
-    print(f"Scanning {len(all_images)} images for duplicates...")
+    logger.info(f"Scanning {len(all_images)} images for duplicates...")
     groups = find_duplicates([str(p) for p in all_images], threshold)
 
     kept = []
@@ -113,18 +115,18 @@ def deduplicate(input_dir, threshold=5, dry_run=False):
             removed_groups.append({'kept': best, 'removed': dupes})
 
     if dry_run:
-        print(f"\nDry run — would keep {len(kept)}, remove {sum(len(g['removed']) for g in removed_groups)}")
+        logger.info(f"\nDry run — would keep {len(kept)}, remove {sum(len(g['removed']) for g in removed_groups)}")
         for g in removed_groups:
-            print(f"\n  KEEP: {g['kept']}")
+            logger.info(f"\n  KEEP: {g['kept']}")
             for r in g['removed']:
-                print(f"    ✗ {r}")
+                logger.info(f"    ✗ {r}")
     else:
         for g in removed_groups:
             for r in g['removed']:
                 os.remove(r)
 
         removed_count = sum(len(g['removed']) for g in removed_groups)
-        print(f"Done. Kept {len(kept)}, removed {removed_count} duplicates.")
+        logger.info(f"Done. Kept {len(kept)}, removed {removed_count} duplicates.")
 
     return kept, removed_groups
 

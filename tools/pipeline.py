@@ -18,9 +18,19 @@ Steps:
 
 Output directory: ./output/<project_name>/
 """
-import sys, os, argparse, subprocess, json, logging
+import sys
+import os
+import argparse
+import subprocess
+import json
+import logging
 from datetime import datetime
 from pathlib import Path
+
+try:
+    from tqdm import tqdm
+except ImportError:
+    tqdm = lambda x, **kw: x
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 
@@ -113,7 +123,7 @@ def step_improve(input_dir, ocr_dir, lang):
     for name in poor_files:
         print(f"    [{index[name]['verdict']}] {name} (score={index[name]['avg_score']})")
 
-    from ocr_engine import ocr_image, ocr_pdf, quality_score, setup_tesseract, IMG_EXTS, PDF_EXTS
+    from ocr_engine import ocr_image, ocr_pdf, setup_tesseract, PDF_EXTS
     setup_tesseract()
 
     improved_count = 0
@@ -236,10 +246,10 @@ def step_generate_prompts(input_dir, ocr_dir, notes_dir, use_clustering):
     prompt_file = os.path.join(notes_dir, '_agent_prompts.txt')
     with open(prompt_file, 'w', encoding='utf-8') as f:
         f.write(f"# AI Agent Prompts — generated {datetime.now().isoformat()}\n\n")
-        f.write(f"Instructions: For each cluster below, have an AI agent:\n")
+        f.write("Instructions: For each cluster below, have an AI agent:\n")
         f.write(f"1. Read ALL the listed OCR JSON files from: {ocr_dir}\n")
-        f.write(f"2. Synthesize into a structured Chinese markdown note\n")
-        f.write(f"3. Follow the writing standards in skill_template.md\n")
+        f.write("2. Synthesize into a structured Chinese markdown note\n")
+        f.write("3. Follow the writing standards in skill_template.md\n")
         f.write(f"4. Save to: {notes_dir}/XX_<topic>.md\n\n")
         f.write("=" * 60 + "\n\n")
 
@@ -349,6 +359,8 @@ def main():
         steps_to_run = steps_order[start_idx:]
 
     try:
+        from tqdm import tqdm  # noqa: F401
+    except ImportError:
         for step in steps_to_run:
             if step == 'dedup':
                 if not args.no_dedup:
@@ -379,7 +391,7 @@ def main():
                 step_check(str(notes_dir), str(ocr_dir), str(report_path))
 
         print(f"\n{'=' * 60}")
-        print(f"Pipeline complete!")
+        print("Pipeline complete!")
         print(f"  OCR results: {ocr_dir}")
         print(f"  Notes:       {notes_dir}")
         print(f"  Report:      {report_path}")

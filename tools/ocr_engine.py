@@ -7,11 +7,22 @@ Usage:
   python ocr_engine.py <input_dir> <output_dir> --scan-only   # just quality scan existing results
 """
 import pytesseract
-import os, sys, json, re, subprocess, argparse
+import os
+import sys
+import json
+import re
+import subprocess
+import argparse
 from PIL import Image, ImageEnhance, ImageFilter, ImageOps
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import threading
+from _common import logger
+
+try:
+    from tqdm import tqdm
+except ImportError:
+    tqdm = lambda x, **kw: x
 
 # ─── Tesseract setup ───────────────────────────────────────────
 def _find_tesseract():
@@ -159,7 +170,8 @@ def ocr_pdf(path, lang='chi_sim+eng', force_image_ocr=False):
     # Strategy 3: pdftoppm → OCR each page (for image-based PDFs)
     if force_image_ocr or not text or len(text) < 200:
         try:
-            import tempfile, shutil
+            import tempfile
+            import shutil
             pdftoppm = shutil.which('pdftoppm')
             if pdftoppm:
                 with tempfile.TemporaryDirectory() as tmpdir:
@@ -224,7 +236,7 @@ def _process_one(args):
         _total_done[0] += 1
         n = _total_done[0]
         if n % 20 == 0:
-            print(f"  [{n}/{_total_all[0]}] {100*n//_total_all[0]}%", flush=True)
+            logger.info(f"  [{n}/{_total_all[0]}] {100*n//_total_all[0]}%", flush=True)
 
     return rel_dir, fname, text
 
@@ -248,13 +260,18 @@ def batch_process(input_dir, output_dir, lang='chi_sim+eng', workers=4):
 
     _total_all[0] = len(all_files)
     _total_done[0] = 0
-    print(f"Files to process: {_total_all[0]}")
-    print(f"Using {workers} threads, language: {lang}")
+    logger.info(f"Files to process: {_total_all[0]}")
+    logger.info(f"Using {workers} threads, language: {lang}")
 
     results = {}
+    try:
+        from tqdm import tqdm
+    except ImportError:
+        tqdm = lambda x, **kw: x
+
     with ThreadPoolExecutor(max_workers=workers) as executor:
         futures = [executor.submit(_process_one, a) for a in all_files]
-        for future in as_completed(futures):
+        for future in tqdm(as_completed(futures), total=len(all_files), desc='OCR', unit='file'):
             rel_dir, fname, text = future.result()
             results.setdefault(rel_dir, []).append({'file': fname, 'text': text})
 
@@ -274,21 +291,21 @@ def batch_process(input_dir, output_dir, lang='chi_sim+eng', workers=4):
     with open(out / '_index.json', 'w', encoding='utf-8') as fh:
         json.dump(index, fh, ensure_ascii=False, indent=2)
 
-    print(f"\nDone: {_total_all[0]} files → {len(results)} result files → {output_dir}")
+    logger.info(f"\nDone: {_total_all[0]} files → {len(results)} result files → {output_dir}")
 
     # Print quality summary
     goods = sum(1 for v in index.values() if v['verdict'] == 'GOOD')
     fairs = sum(1 for v in index.values() if v['verdict'] == 'FAIR')
     poors = sum(1 for v in index.values() if v['verdict'] == 'POOR')
-    print(f"Quality: GOOD={goods} FAIR={fairs} POOR={poors}")
+    logger.info(f"Quality: GOOD={goods} FAIR={fairs} POOR={poors}")
 
     return results, index
 
 def quality_scan(results_dir):
     """Scan existing OCR JSON results and print quality report."""
     out = Path(results_dir)
-    print(f"{'FILE':<55} {'ITEMS':>5} {'SCORE':>7} {'AVGLEN':>7} {'VERDICT'}")
-    print("-" * 85)
+    logger.info(f"{'FILE':<55} {'ITEMS':>5} {'SCORE':>7} {'AVGLEN':>7} {'VERDICT'}")
+    logger.info("-" * 85)
     data = {}
     for fname in sorted(os.listdir(out)):
         if fname == '_index.json' or not fname.endswith('.json'):
@@ -300,7 +317,7 @@ def quality_scan(results_dir):
         avg_score = round(sum(scores) / len(scores), 1)
         avg_len = int(sum(lengths) / len(lengths))
         v = verdict(avg_score)
-        print(f"{fname:<55} {len(items):>5} {avg_score:>7.1f} {avg_len:>7} {v}")
+        logger.info(f"{fname:<55} {len(items):>5} {avg_score:>7.1f} {avg_len:>7} {v}")
         data[fname] = {'count': len(items), 'avg_score': avg_score, 'verdict': v}
     return data
 

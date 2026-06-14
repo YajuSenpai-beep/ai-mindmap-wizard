@@ -1,0 +1,1 @@
+Python 是一门广泛使用的编程语言，以其简洁易读的语法著称。核心特性包括：动态类型系统（运行时确定变量类型）、垃圾回收（自动内存管理）、丰富的标准库（涵盖网络、文件、数据库等）。Python 的应用领域包括 Web 开发（Django/Flask/FastAPI）、数据科学（NumPy/Pandas/Jupyter）、机器学习（PyTorch/TensorFlow/scikit-learn）、自动化脚本和 DevOps。Python 3.12 引入了更快的解释器和改进的错误消息。Python 3.13 预计将移除 GIL（全局解释器锁）的限制。包管理方面，pip 是标准工具，poetry 和 uv 是更现代的替代品。代码风格遵循 PEP 8 规范。

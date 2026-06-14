@@ -1,0 +1,46 @@
+{
+  "name": "ai-mindmap-wizard",
+  "version": "5.0.0",
+  "description": "AI思维可视化引擎 — 图片/PDF→OCR提取→AI生成Markdown→XMind/draw.io 思维导图，全管道覆盖。含方法论(五星心法/7要素/发散收敛)、37种图表选型、素材准备(OCR/去重/聚类)、AI管道、13个软件操作指南。",
+  "main": "SKILL.md",
+  "scripts": {
+    "test": "pytest tests/ -v",
+    "check": "python tests/test_links.py .",
+    "validate": "python -c \"import yaml; f=open('SKILL.md'); c=f.read(); fm=yaml.safe_load(c.split('---')[1]); print(f'✅ {fm[\\\"name\\\"]} valid')\"",
+    "install-skill": "cp -r . ~/.claude/skills/ai-mindmap-wizard && echo '✅ Skill installed'",
+    "docker-build": "docker build -t ai-mindmap-wizard -f docker/Dockerfile .",
+    "docker-run": "docker run -v ./input:/app/input -v ./output:/app/output ai-mindmap-wizard"
+  },
+  "keywords": [
+    "claude-code",
+    "agent-skills",
+    "mindmap",
+    "mermaid",
+    "xmind",
+    "drawio",
+    "ocr",
+    "diagram",
+    "visualization",
+    "思维导图",
+    "AI管道"
+  ],
+  "author": "YajuSenpai-beep",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YajuSenpai-beep/ai-mindmap-wizard"
+  },
+  "files": [
+    "SKILL.md",
+    "README.md",
+    "README_EN.md",
+    "LICENSE",
+    "CONTRIBUTING.md",
+    "references/",
+    "tools/",
+    "templates/",
+    "tutorial/",
+    "docker/",
+    ".github/"
+  ]
+}

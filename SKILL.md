@@ -127,6 +127,16 @@ description: |
 | 思维导图的图片想数字化 | [图片→导图重建](references/ai-pipeline/image-to-mindmap.md) |
 | 只有一个主题/想法 | [主题→大纲扩展](references/ai-pipeline/topic-to-mindmap.md) |
 | 要画流程图 | [Mermaid流程图](references/ai-pipeline/mermaid-flowchart.md) |
+| 要画架构图/专业图 | [DrawIO生成](references/ai-pipeline/drawio-generation.md) |
+| 要交互式数据可视化 | [D3.js交互式管道](references/ai-pipeline/d3-interactive.md) |
+| 对话太长想梳理 | [对话转导图](references/ai-pipeline/realtime-mindmap.md) |
+| 用 Draw.io MCP 直接生成 | [Draw.io MCP指南](references/ai-pipeline/drawio-mcp-guide.md) |
+| 给一个网址自动生成 | [URL一键导图](tools/url_to_mindmap.py) |
+| YouTube/视频 → 导图 | [YouTube时间戳导图](references/ai-pipeline/youtube-mindmap.md) |
+| 不要提示词直接生成 | [无提示词模式](references/ai-pipeline/no-prompt-mode.md) |
+| 导图 → 演示文稿(PPT) | [导图转PPT](references/ai-pipeline/ppt-from-mindmap.md) |
+| 不用复制粘贴直接出图 | [内联AI模式](references/ai-pipeline/inline-ai.md) |
+| 想要更好看的默认样式 | [高颜值视觉样式](references/ai-pipeline/visual-styles.md) |
 
 ### A3. 给出提示词 + 操作步骤
 
@@ -157,6 +167,9 @@ description: |
 | 知识量大、一张图装不下 | 子母图技法 | [子母图](references/methodology/mother-child-diagram.md) |
 | 想从多个角度分析同一主题 | 多视角分析 | [多视角分析](references/methodology/multi-perspective.md) |
 | AI 生成质量不够好/想自检 | 写作规范+质量自检 | [写作规范](references/methodology/writing-standards.md) → [质量自检](references/troubleshooting/quality-assurance.md) |
+| AI 编造内容/幻觉 | 防幻觉验证 | [防幻觉验证](references/troubleshooting/anti-hallucination.md) |
+| 想了解概念间深层关系 | 知识图谱中间表示 | [知识图谱中间表示](references/methodology/knowledge-graph.md) |
+| 图表不够专业/信息密度低 | Tufte可视化原则 | [Tufte可视化原则](references/methodology/tufte-principles.md) |
 
 ### B2. 给出方法论框架 + 可选的 AI 衔接
 
@@ -212,10 +225,20 @@ description: |
 | PPT 从入门到接单 | [PPT完全指南](references/software/ppt-guide.md) |
 | C4D 建模渲染动画 | [C4D完全指南](references/software/c4d-guide.md) |
 | Think-Cell 咨询级图表 | [Think-Cell指南](references/software/thinkcell-guide.md) |
+| Obsidian Canvas 思维导图 | [Obsidian Canvas指南](references/software/obsidian-canvas-guide.md) |
+| Excalidraw 手绘风格 | [Excalidraw指南](references/software/excalidraw-guide.md) |
+| Mermaid 语法错误自动修复 | [Mermaid修复器](tools/mermaid_fixer.py) |
+| Markdown 一键转 XMind 原生文件 | [XMind生成器](tools/markdown_to_xmind.py) |
 | XMind vs draw.io vs Visio 该用哪个 | [工具对照表](references/software/cross-tool-mapping.md) |
 | 快捷键 | [快捷键](references/software/keyboard-shortcuts.md) |
 | 出错了/乱码/导入失败 | [故障排查](references/troubleshooting/common-issues.md) |
 | AI 生成遗漏/编造/质量差 | [质量自检](references/troubleshooting/quality-assurance.md) |
+| **外部集成** | |
+| NotebookLM / 播客生成 | [NotebookLM MCP集成](references/integrations/notebooklm-mcp.md) |
+| VisualCave 逐步揭示图表 | [VisualCave集成](references/integrations/visualcave.md) |
+| 开源导图库选型 | [开源库对比](references/integrations/oss-libraries.md) |
+| Miro/Lucidchart/Eraser 商业工具 | [商业工具对比](references/integrations/commercial-tools.md) |
+| 本地小模型离线生成 | [本地模型指南](references/integrations/local-models.md) |
 
 ---
 
@@ -244,6 +267,8 @@ description: |
 | Word/PPT/HTML 文档 | [格式提取指南](references/material-prep/format-extraction.md) |
 | 微信文章 HTML | [微信文章转换](references/material-prep/format-extraction.md) |
 | 大量重复图片 | [图片去重](references/material-prep/pipeline-overview.md) |
+| Obsidian vault 中的笔记 | [Obsidian工作流](references/material-prep/obsidian-workflow.md) |
+| 音频/视频/播客/会议录音 | [多模态输入管道](references/material-prep/multimodal-input.md) |
 
 ### F2. 如果用户有 Python 环境
 

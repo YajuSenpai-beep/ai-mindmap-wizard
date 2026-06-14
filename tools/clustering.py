@@ -8,10 +8,14 @@ Produces topic clusters that reflect actual content, not folder names.
 Usage:
   python clustering.py <ocr_results_dir> [--min-similarity 0.3] [--output clusters.json]
 """
-import os, sys, json, re, argparse
+import os
+import json
+import re
+import argparse
 from pathlib import Path
 from collections import defaultdict
 from math import log, sqrt
+from _common import logger
 
 
 def tokenize(text):
@@ -64,6 +68,10 @@ def load_ocr_results(ocr_dir):
     """Load all OCR JSON files, return {name: concatenated_text}."""
     ocr_path = Path(ocr_dir)
     docs = {}
+    try:
+        from tqdm import tqdm
+    except ImportError:
+        tqdm = lambda x, **kw: x
     for fname in sorted(os.listdir(ocr_path)):
         if fname == '_index.json' or not fname.endswith('.json'):
             continue
@@ -129,12 +137,12 @@ def cluster_by_content(ocr_dir, min_similarity=0.3):
 
 def print_clusters(clusters):
     """Pretty-print clustering results."""
-    print(f"\nFound {len(clusters)} content-based clusters:\n")
+    logger.info(f"\nFound {len(clusters)} content-based clusters:\n")
     for i, c in enumerate(clusters, 1):
-        print(f"### Cluster {i}: {c['name']} ({len(c['docs'])} docs)")
+        logger.info(f"### Cluster {i}: {c['name']} ({len(c['docs'])} docs)")
         for doc in c['docs']:
-            print(f"    - {doc}")
-        print()
+            logger.info(f"    - {doc}")
+        logger.info()
 
 
 if __name__ == '__main__':
@@ -151,4 +159,4 @@ if __name__ == '__main__':
     if args.output:
         with open(args.output, 'w', encoding='utf-8') as f:
             json.dump(clusters, f, ensure_ascii=False, indent=2)
-        print(f"Clusters saved to: {args.output}")
+        logger.info(f"Clusters saved to: {args.output}")

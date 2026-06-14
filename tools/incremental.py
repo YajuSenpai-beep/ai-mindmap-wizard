@@ -5,8 +5,12 @@ Incremental Processing — track file hashes to skip unchanged files on re-runs.
 Usage:
   python incremental.py <input_dir> <state_file> [--reset]
 """
-import os, json, hashlib, argparse
+import os
+import json
+import hashlib
+import argparse
 from pathlib import Path
+from _common import logger
 
 
 def file_hash(path):
@@ -86,7 +90,7 @@ def get_files_to_process(input_dir, state_file, reset=False):
     current = scan_directory(input_dir)
     save_state(state_file, current)
 
-    print(f"  New: {len(new_files)} | Modified: {len(modified)} | "
+    logger.info(f"  New: {len(new_files)} | Modified: {len(modified)} | "
           f"Deleted: {len(deleted)} | Unchanged: {len(unchanged)}")
     return to_process
 
@@ -99,17 +103,17 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     new, mod, deleted, unchanged = diff_state(args.input_dir, args.state_file, args.reset)
-    print(f"New: {len(new)} | Modified: {len(mod)} | Deleted: {len(deleted)} | Unchanged: {len(unchanged)}")
+    logger.info(f"New: {len(new)} | Modified: {len(mod)} | Deleted: {len(deleted)} | Unchanged: {len(unchanged)}")
 
     if new:
-        print("\nNew files:")
+        logger.info("\nNew files:")
         for f in new:
-            print(f"  + {f}")
+            logger.info(f"  + {f}")
     if mod:
-        print("\nModified files:")
+        logger.info("\nModified files:")
         for f in mod:
-            print(f"  ~ {f}")
+            logger.info(f"  ~ {f}")
     if deleted:
-        print("\nDeleted files:")
+        logger.info("\nDeleted files:")
         for f in deleted:
-            print(f"  - {f}")
+            logger.info(f"  - {f}")

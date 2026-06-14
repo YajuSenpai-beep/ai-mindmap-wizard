@@ -11,10 +11,14 @@
 适用于：从浏览器"另存为"的微信文章 HTML，或批量导出的微信文章。
 依赖：beautifulsoup4, html2text, lxml
 """
-import sys, re, os, argparse
+import sys
+import re
+import os
+import argparse
 from bs4 import BeautifulSoup
 from html2text import HTML2Text
 from pathlib import Path
+from _common import logger
 
 
 def convert(html_path: str) -> str:
@@ -102,16 +106,16 @@ def main():
     for path in files:
         path_str = str(path)
         if not os.path.isfile(path_str):
-            print(f"跳过: {path_str} (文件不存在)")
+            logger.info(f"跳过: {path_str} (文件不存在)")
             continue
         try:
             out = convert(path_str)
-            print(f"OK  {path_str} → {out}")
+            logger.info(f"OK  {path_str} → {out}")
             success += 1
         except Exception as e:
-            print(f"ERR {path_str}: {e}")
+            logger.info(f"ERR {path_str}: {e}")
 
-    print(f"\n完成: {success}/{len(files)}")
+    logger.info(f"\n完成: {success}/{len(files)}")
 
 
 if __name__ == "__main__":

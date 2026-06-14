@@ -5,8 +5,12 @@ Extended Format Support — extract text from Word, PowerPoint, and generic HTML
 Usage:
   python formats.py <input_dir> --type docx|pptx|html [--output-dir ./text/]
 """
-import os, sys, re, argparse
+import os
+import sys
+import re
+import argparse
 from pathlib import Path
+from _common import logger
 
 
 def extract_docx(path):
@@ -168,7 +172,7 @@ def batch_extract(input_dir, output_dir=None):
             fname = Path(path).stem + '.txt'
             with open(out / fname, 'w', encoding='utf-8') as f:
                 f.write(data['text'])
-        print(f"Extracted {len(results)} files → {output_dir}")
+        logger.info(f"Extracted {len(results)} files → {output_dir}")
 
     return results
 
@@ -184,8 +188,8 @@ if __name__ == '__main__':
     if os.path.isfile(args.input):
         text, ftype = extract_file(args.input, args.type)
         if text:
-            print(text)
+            logger.info(text)
         else:
-            print(f"Unsupported or empty: {args.input}")
+            logger.info(f"Unsupported or empty: {args.input}")
     else:
         batch_extract(args.input, args.output_dir)

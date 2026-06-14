@@ -5,9 +5,12 @@ Quality Checker: compare generated notes against OCR source data.
 Usage:
   python quality_checker.py <notes_dir> <ocr_results_dir> [--output report.md]
 """
-import json, os, re, sys, argparse
+import json
+import os
+import re
+import argparse
 from pathlib import Path
-from collections import defaultdict
+from _common import logger
 
 def load_ocr_sources(ocr_dir):
     """Load all OCR JSON results into {topic_name: [{file, text}]}."""
@@ -78,15 +81,15 @@ def check_section(section_title, note_content, ocr_items):
     cjk_ocr = set(re.findall(r'[一-鿿]{2,}', all_ocr_text))
     cjk_note = set(re.findall(r'[一-鿿]{2,}', note_content))
 
-    only_in_note = cjk_note - cjk_ocr
+    cjk_note - cjk_ocr
     only_in_ocr = cjk_ocr - cjk_note
 
     if len(only_in_ocr) > 20:
         findings.append(('MISSING', f'OCR has {len(only_in_ocr)} terms not in note'))
 
     # Check for numbers/steps mismatch
-    ocr_numbers = set(re.findall(r'(\d+)[\.\、\s]', all_ocr_text))
-    note_numbers = set(re.findall(r'(\d+)[\.\、\s]', note_content))
+    set(re.findall(r'(\d+)[\.\、\s]', all_ocr_text))
+    set(re.findall(r'(\d+)[\.\、\s]', note_content))
 
     return findings
 
@@ -130,7 +133,7 @@ def generate_report(notes_dir, ocr_dir, output_path):
             else:
                 no_source += 1
 
-        lines.append(f'')
+        lines.append('')
         lines.append(f'- 有 OCR 源对应的章节：{matches}')
         lines.append(f'- 无 OCR 源对应的章节：{no_source}')
         lines.append('')
@@ -146,7 +149,7 @@ def generate_report(notes_dir, ocr_dir, output_path):
     with open(output_path, 'w', encoding='utf-8') as f:
         f.write(report)
 
-    print(f"Report saved to: {output_path}")
+    logger.info(f"Report saved to: {output_path}")
     return report
 
 if __name__ == '__main__':

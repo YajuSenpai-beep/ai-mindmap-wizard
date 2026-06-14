@@ -11,8 +11,10 @@ Usage:
   # Without API key (prints correction prompts for manual use)
   python llm_correct.py <ocr_json_or_text> --manual
 """
-import os, sys, json, argparse
+import json
+import argparse
 from pathlib import Path
+from _common import logger
 
 
 CORRECTION_PROMPT = """你是一位 OCR 文本校对专家。请纠正以下 OCR 识别结果中的明显错误。
@@ -155,19 +157,19 @@ if __name__ == '__main__':
         result, _ = correct_ocr_json(str(input_path), provider, args.api_key, args.model,
                                      dry_run=args.manual)
         if args.manual:
-            print(f"\n=== {len(result)} correction prompts ===\n")
+            logger.info(f"\n=== {len(result)} correction prompts ===\n")
             for i, r in enumerate(result, 1):
-                print(f"--- Prompt {i}: {r['file']} ---")
-                print(r['prompt'])
-                print()
+                logger.info(f"--- Prompt {i}: {r['file']} ---")
+                logger.info(r['prompt'])
+                logger.info()
         else:
-            print(f"Corrected: {result} items")
+            logger.info(f"Corrected: {result} items")
     else:
         # Plain text input
         text = input_path.read_text(encoding='utf-8') if input_path.exists() else args.input
         corrected, prompt = correct_text(text, args.provider if not args.manual else None,
                                          args.api_key, args.model)
         if args.manual and prompt:
-            print(prompt)
+            logger.info(prompt)
         elif corrected:
-            print(corrected)
+            logger.info(corrected)
